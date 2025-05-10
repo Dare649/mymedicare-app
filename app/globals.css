@@ -14,10 +14,24 @@
 
 
   /* primary color */
-  --color-primary-1: #002B5B;
+  --color-primary-1: #EBF3FF;
+  --color-primary-2: #8FBAFF;
+  --color-primary-3: #5797FF;
+  --color-primary-4: #1F75FF;
+  --color-primary-5: #0058E6;
+
   
   /* secondary color */
-  --color-secondary-1: #F4F4F4;
+  --color-secondary-1: #F8FAFC;
+  --color-secondary-2: #F1F5F9;
+  --color-secondary-3: #E2E8F0;
+  --color-secondary-4: #CBD5E1;
+  --color-secondary-5: #94A3BB;
+  --color-secondary-6: #647488;
+  --color-secondary-7: #475569;
+  --color-secondary-8: #334155;
+  --color-secondary-9: #1E293B;
+  --color-secondary-10: #0F172A;
 
   /* tertiary color */
   --color-tertiary-1: #333333;
@@ -25,3 +39,16 @@
 }
 
 
+/* 🚀 Custom animation for horizontal scrolling */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 20s linear infinite;
+}

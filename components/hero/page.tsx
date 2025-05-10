@@ -11,10 +11,10 @@ const Hero = () => {
     <div className="relative w-full h-[100vh]">
       {/* Background Image */}
       <Image
-        src="/img-3.jpg"
-        alt="stonepay-admin-app"
-        fill
+        src="/hero-section-image.png"
+        alt="MyMedicare"
         className="object-cover"
+        fill
         quality={100}
         priority
       />
@@ -24,7 +24,7 @@ const Hero = () => {
       <div className="relative z-10 ">
         <Navigation />
         <div className="flex lg:flex-row sm:flex-col gap-y-5 p-5 h-full">
-            <div className="w-[50%] flex flex-col float-left mt-28">
+            <div className="lg:w-[50%] sm:w-full flex flex-col float-left mt-28">
                 <div className="w-[50%]">
                     <TransparentCard >
                         <div className="flex items-center justify-center gap-3 p-2">
@@ -39,7 +39,7 @@ const Hero = () => {
                 <p className="font-bold text-white mb-5 text-xl">Get access to professional healthcare <br /> providers for a fraction of the cost with <br /> MyMedicare</p>
                 <button className="bg-white text-xl font-semibold rounded-4xl text-center p-3 capitalize lg:w-[40%] sm:w-full">download the app</button>
             </div>
-            <div className="w-[50%]">
+            <div className="lg:w-[50%] sm:w-full">
                 <div className="flex flex-col mt-[32%]">
                     <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 lg:w-[70%] justify-end">
                         {
@@ -54,6 +54,8 @@ const Hero = () => {
                             ))
                         }
                     </div>
+
+                    {/* insights */}
                     <div className="w-full flex md:flex-row sm:flex-col gap-5 my-5">
                         <div className="w-[50%]">
                             <Card
@@ -61,7 +63,7 @@ const Hero = () => {
                             >
                                 <div className="p-2">
                                     <div className="flex flex-row items-center gap-3">
-                                        <div className="bg-primary-1 w-10 h-10 rounded-full flex items-center justify-center p-1">
+                                        <div className="bg-primary-5 w-10 h-10 rounded-full flex items-center justify-center p-1">
                                             <MdOutlineLightbulb size={20}/>
                                         </div>
                                         <h2 className="text-tertiary-1 font-medium text-lg capitalize">insights</h2>
@@ -72,16 +74,16 @@ const Hero = () => {
                             </Card>
                         </div>
                         <div className="w-[50%]">
-                        <Card color="white" className="relative h-full">
-                            <div
-                                className="absolute inset-0 bg-cover bg-center rounded-4xl"
-                                style={{ backgroundImage: 'url(/img-3.jpg)' }}
-                            ></div>
-                            <div className="relative p-2 z-10">
-                                <h2 className="text-2xl font-bold text-tertiary-1">10+</h2>
-                                <h2 className="capitalize font-medium text-tertiary-1">doctors</h2>
-                            </div>
-                        </Card>
+                            <Card color="white" className="relative h-full">
+                                <div
+                                    className="absolute inset-0 bg-cover bg-center rounded-4xl"
+                                    style={{ backgroundImage: 'url(/img-3.jpg)' }}
+                                ></div>
+                                <div className="relative p-2 z-10">
+                                    <h2 className="text-2xl font-bold text-tertiary-1">10+</h2>
+                                    <h2 className="capitalize font-medium text-tertiary-1">doctors</h2>
+                                </div>
+                            </Card>
                         </div>
                     </div>
                 </div>
