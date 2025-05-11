@@ -99,7 +99,7 @@ const Pricing = () => {
           </Card>
         </div>  
       </div>
-      <h2 className="text-tertiary-1 md:text-5xl sm:text-3xl font-bold mb-10 md:mt-0 sm:mt-60">Empower your health journey with proactive <br />tracking <span className="text-secondary-5">and reduce health risk by up to 78%</span></h2>
+      <h2 className="text-tertiary-1 md:text-5xl sm:text-3xl font-bold mb-10 md:mt-0 sm:mt-32">Empower your health journey with proactive <br />tracking <span className="text-secondary-5">and reduce health risk by up to 78%</span></h2>
 
 
       <div className="md:flex sm:hidden w-full h-[100vh] relative rounded-4xl overflow-hidden p-10">

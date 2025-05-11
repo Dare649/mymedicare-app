@@ -14,7 +14,7 @@ const Features = () => {
       </div>
       <div className='w-full md:my-20 sm:my-5 grid lg:grid-cols-2 sm:grid-cols-1 gap-5'>
             {/* patient */}
-            <div className='w-full h-[110vh]'>
+            <div className='w-full lg:h-[110vh]'>
                 <Card
                     className="bg-secondary-5 w-full h-full"
                 >
@@ -36,7 +36,7 @@ const Features = () => {
                 </Card>
             </div>
             {/* health provider */}
-            <div className='w-full h-[110vh]'>
+            <div className='w-full lg:h-[110vh]'>
                 <Card
                     className="bg-secondary-5 w-full h-full"
                 >
@@ -58,7 +58,7 @@ const Features = () => {
                 </Card>
             </div>
             {/* prescription management */}
-            <div className='w-full h-[110vh]'>
+            <div className='w-full lg:h-[110vh]'>
                 <Card
                     className="bg-secondary-5 w-full h-full"
                 >
@@ -80,7 +80,7 @@ const Features = () => {
                 </Card>
             </div>
             {/* remote monitoring */}
-            <div className='w-full h-[110vh]'>
+            <div className='w-full lg:h-[110vh]'>
                 <Card
                     className="bg-secondary-5 w-full h-full"
                 >
