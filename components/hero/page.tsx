@@ -23,25 +23,25 @@ const Hero = () => {
       {/* Navigation and Hero Content */}
       <div className="relative z-10 ">
         <Navigation />
-        <div className="flex lg:flex-row sm:flex-col gap-y-5 p-5 h-full">
-            <div className="lg:w-[50%] sm:w-full flex flex-col float-left mt-28">
-                <div className="w-[50%]">
+        <div className="flex md:flex-row sm:flex-col gap-y-5 p-5 h-full">
+            <div className="md:w-[50%] sm:w-full flex flex-col float-left md:mt-28 sm:mt-20">
+                <div className="md:w-[50%] sm:w-full">
                     <TransparentCard >
-                        <div className="flex items-center justify-center gap-3 p-2">
+                        <div className="flex items-center justify-center md:gap-3 sm:gap-1 md:p-2 sm:p-1">
                             <SiMoleculer/>
                             <h2 className="">Personalized Solution for Daily Need</h2>
                         </div>
                     </TransparentCard>
                 </div>
-                <h2 className="text-6xl my-5 font-bold text-white">
+                <h2 className="md:text-6xl sm:text-4xl md:my-5 sm:my-2 font-bold text-white">
                     Providing Reliable <br /> and Affordable <br /> Healthcare for <br /> Africa
                 </h2>
-                <p className="font-bold text-white mb-5 text-xl">Get access to professional healthcare <br /> providers for a fraction of the cost with <br /> MyMedicare</p>
-                <button className="bg-white text-xl font-semibold rounded-4xl text-center p-3 capitalize lg:w-[40%] sm:w-full">download the app</button>
+                <p className="font-bold text-white mb-5 md:text-xl sm:text-md">Get access to professional healthcare <br /> providers for a fraction of the cost with <br /> MyMedicare</p>
+                <button className="bg-white md:text-xl sm:text-md font-semibold rounded-4xl text-center md:p-3 sm:p-1 capitalize lg:w-[40%] sm:w-full">download the app</button>
             </div>
             <div className="lg:w-[50%] sm:w-full">
                 <div className="flex flex-col mt-[32%]">
-                    <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 lg:w-[70%] justify-end">
+                    <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 md:w-[70%] sm:hidden justify-end">
                         {
                             heroText.map((item, id) => (
                                 <div
@@ -56,7 +56,7 @@ const Hero = () => {
                     </div>
 
                     {/* insights */}
-                    <div className="w-full flex md:flex-row sm:flex-col gap-5 my-5">
+                    <div className="w-full flex sm:hidden md:flex-row sm:flex-col gap-5 my-5">
                         <div className="w-[50%]">
                             <Card
                                 color="white"

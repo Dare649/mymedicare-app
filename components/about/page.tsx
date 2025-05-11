@@ -9,11 +9,11 @@ import Image from "next/image";
 const About = () => {
   return (
     <div className='w-full lg:p-10 sm:p-3'>
-      <div className='w-full flex md:flex-row sm:flex-col items-center'>
-        <div className='lg:w-[50%] sm:w-full flex flex-col float-left'>
-            <h2 className='text-6xl font-medium'>Why should you use <br />MyMedicare today?</h2>
+      <div className='w-full flex md:flex-row sm:flex-col items-center gap-y-5'>
+        <div className='md:w-[50%] sm:w-full flex flex-col float-left'>
+            <h2 className='md:text-6xl sm:text-3xl font-medium'>Why should you use <br />MyMedicare today?</h2>
         </div>
-        <div className='lg:w-[50%] sm:w-full flex flex-col'>
+        <div className='md:w-[50%] sm:w-full flex flex-col'>
             <p className='first-letter:capitalize text-secondary-7 tracking-wider mb-5 '>we put you at the forefront of our innovation and healthcare provision <br />ensuring constant reliability and affordability of the services you <br />receive</p>
             
         </div>
@@ -24,8 +24,8 @@ const About = () => {
                 className="bg-secondary-5 w-full"
             >
                 <div className="w-full p-2">
-                    <h2 className="capitalize font-bold text-secondary-10 text-xl">medical professionals are at your <br /> fingertips</h2>
-                    <div className="mt-[30%] border-t-1 border-secondary-4 w-full">
+                    <h2 className="capitalize font-bold text-secondary-10 md:text-xl sm:text-lg">medical professionals are at your <br /> fingertips</h2>
+                    <div className="md:mt-[30%] sm:mt-5 border-t-1 border-secondary-4 w-full">
                         <p className="text-secondary-5 font-medium  first-letter:capitalize mt-2">we connect you to qualified medical <br />professionals saving you the stress <br />of long traffic and queues before access <br />quality care </p>
                     </div>
                     <div className="bg-secondary-5 mt-8 w-16 h-16 rounded-full flex items-center justify-center p-1">
@@ -44,9 +44,9 @@ const About = () => {
                 >
                 </div>
                 <div className="relative z-10">
-                    <h2 className="text-xl font-bold text-white first-letter:capitalize">skip long waiting hours at <br />the hospital</h2>
+                    <h2 className="md:text-xl sm:text-lg font-bold text-white first-letter:capitalize">skip long waiting hours at <br />the hospital</h2>
                 </div>
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 odd:bg-white odd:text-secondary-9 mt-52">
+                <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 odd:bg-white odd:text-secondary-9 md:mt-52 sm:mt-20">
                     {
                         skipText.map((item, id) => (
                             <div
@@ -66,22 +66,22 @@ const About = () => {
                 className="bg-secondary-5 w-full"
             >
                 <div className="w-full p-2">
-                    <h2 className="capitalize font-bold text-secondary-10 text-xl">access quality care</h2>
-                    <div className="mt-[30%] border-t-1 border-secondary-4 w-full">
+                    <h2 className="capitalize font-bold text-secondary-10 md:text-xl sm:text-lg">access quality care</h2>
+                    <div className="md:mt-[30%] sm:mt-5 border-t-1 border-secondary-4 w-full">
                         <p className="text-secondary-5 font-medium  first-letter:capitalize mt-2">experience personal and holistic care <br />tailored to your unique need, ensuring you <br />quality healthcare you deserve </p>
                     </div>
                     <div className="flex items-center justify-between mt-24 gap-x-2">
                         <div className="bg-secondary-5 w-16 h-16 rounded-full flex items-center justify-center p-1">
                             <FaMeteor size={30} className="rotate-180"/>
                         </div>
-                        <h2 className="text-xl font-bold capitalize text-secondary-10">anyplace, anywhere</h2>
+                        <h2 className="md:text-xl sm:text-lg font-bold capitalize text-secondary-10">anyplace, anywhere</h2>
                     </div>
                 </div>
             </Card>
         </div>
       </div>
       <div className="w-full flex flex-col mt-20 mb-5">
-        <h2 className="capitalize text-5xl font-medium text-center">smart insights, seamless access</h2>
+        <h2 className="capitalize md:text-5xl sm:text-3xl font-medium text-center">smart insights, seamless access</h2>
         <p className="text-secondary-5 font-medium text-center leading-normal tracking-widest mt-10">Stay on top of your health with intuitive charts and real-time data, all in one place</p>
       </div>
       {/* Centered Image Section */}

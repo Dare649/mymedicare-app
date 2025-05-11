@@ -16,23 +16,23 @@ const Pricing = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <div className='w-full lg:p-10 sm:p-3'>
+    <div className='w-full md:p-10 sm:p-3'>
       <div className='w-full flex md:flex-row items-center justify-between sm:flex-col gap-10'>
-        <h2 className='first-letter:capitalize text-5xl font-semibold text-tertiary-1'>choose the right plan <br />for your health <br />journey</h2>
-        <p className="text-secondary-5 font-medium  first-letter:capitalize">accessible and reliable plans thoughtfully tailored to support your<br />unique health journey and empower you with personalized care <br />options. </p>
+        <h2 className='first-letter:capitalize md:text-5xl sm:text-3xl font-semibold text-tertiary-1'>choose the right plan <br />for your health <br />journey</h2>
+        <p className="text-secondary-5 font-medium first-letter:capitalize">accessible and reliable plans thoughtfully tailored to support your<br />unique health journey and empower you with personalized care <br />options. </p>
       </div>
-      <div className='w-full my-20 grid md:grid-cols-2 sm:grid-cols-1 gap-10'>
+      <div className='w-full my-20 grid md:grid-cols-2 sm:grid-cols-1 md:gap-10 sm:gap-60'>
         <div className="h-[100vh]">
           <Card
               className="bg-secondary-5 w-full"
           >
             <div className="w-full p-2">
-                <h2 className="capitalize font-bold text-secondary-10 text-2xl">remote monitoring</h2>
-                <div className="w-full mt-10 border-t-2 border-secondary-6 py-5">
+                <h2 className="capitalize font-bold text-secondary-10 md:text-2xl sm:text-lg">remote monitoring</h2>
+                <div className="w-full md:mt-10 sm:mt-5 border-t-2 border-secondary-6 md:py-5 sm:py-3">
                     <p className="text-tertiary-1 font-semibold">Stay connected with your health from anywhere with real-time tracking <br /> personalized health reports and expert support from the comfort of<br />your home.</p>
                 </div>
-                <div className=" w-full my-10">
-                    <h2 className="capitalize mb-10 text-tertiary-1 text-2xl font-semibold">feature</h2>
+                <div className=" w-full md:my-10 sm:my-5">
+                    <h2 className="capitalize mb-10 text-tertiary-1 md:text-2xl sm:text-lg font-semibold">feature</h2>
                     <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-5">
                     {
                           price1.map((item, id) => (
@@ -48,22 +48,22 @@ const Pricing = () => {
                 </div>
 
                 </div>
-                <h2 className="text-5xl font-bold text-tertiary-1">#1,000</h2>
+                <h2 className="md:text-5xl sm:text-3xl font-bold text-tertiary-1">#1,000</h2>
               
             </div>
           </Card>
         </div>
-        <div className="h-[100vh]">
+        <div className="h-[100vh] ">
           <Card
               className="bg-secondary-5 w-full"
           >
             <div className="w-full p-2">
-                <h2 className="capitalize font-bold text-secondary-10 text-2xl">other services</h2>
-                <div className="w-full mt-10 border-t-2 border-secondary-6 py-5">
+                <h2 className="capitalize font-bold text-secondary-10 md:text-2xl sm:text-lg">other services</h2>
+                <div className="w-full mt-10 border-t-2 border-secondary-6 md:py-5 sm:py-3">
                     <p className="text-tertiary-1 font-semibold">Stay connected with your health from anywhere with real-time tracking <br /> personalized health reports and expert support from the comfort of<br />your home.</p>
                 </div>
-                <div className=" w-full my-10">
-                    <h2 className="capitalize mb-6 text-tertiary-1 text-2xl font-semibold">feature</h2>
+                <div className=" w-full md:my-10 sm:my-5">
+                    <h2 className="capitalize mb-6 text-tertiary-1 md:text-2xl sm:text-lg font-semibold">feature</h2>
                     <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-5">
                     {
                           price2.map((item, id) => (
@@ -79,9 +79,9 @@ const Pricing = () => {
                 </div>
 
                 </div>
-                <div className="flex items-center gap-x-10">
+                <div className="flex items-center md:gap-x-10 sm:gap-x-5">
                   <Link href={'https://wa.me/2347025183434'} target="_blank">
-                    <div className="bg-white rounded-full w-14 h-14 flex items-center justify-center p-1 cursor-pointer">
+                    <div className="bg-white rounded-full md:w-14 md:h-14 sm:w-10 sm:h-10 flex items-center justify-center p-1 cursor-pointer">
                       <Image
                         src="/whatsapp-icon.png"
                         alt="MyMedicare"
@@ -93,13 +93,13 @@ const Pricing = () => {
                     />
                     </div>
                   </Link>
-                  <h2 className="text-tertiary-1 font-medium text-2xl ">Reach us on WhatsApp for a quick <br />reply.</h2>
+                  <h2 className="text-tertiary-1 font-medium md:text-2xl sm:text-lg">Reach us on WhatsApp for a quick <br />reply.</h2>
                 </div>
             </div>
           </Card>
         </div>  
       </div>
-      <h2 className="text-tertiary-1 text-5xl font-bold mb-10">Empower your health journey with proactive <br />tracking <span className="text-secondary-5">and reduce health risk by up to 78%</span></h2>
+      <h2 className="text-tertiary-1 md:text-5xl sm:text-3xl font-bold mb-10 md:mt-0 sm:mt-60">Empower your health journey with proactive <br />tracking <span className="text-secondary-5">and reduce health risk by up to 78%</span></h2>
 
 
       <div className="md:flex sm:hidden w-full h-[100vh] relative rounded-4xl overflow-hidden p-10">
@@ -139,8 +139,8 @@ const Pricing = () => {
       </div>
 
       <div className="my-16 w-full">
-          <h2 className="text-tertiary-1 font-semibold capitalize text-4xl text-center">trusted partners with</h2>
-          <div className="w-full overflow-hidden relative py-10">
+          <h2 className="text-tertiary-1 font-semibold capitalize md:text-4xl sm:text-2xl text-center">trusted partners with</h2>
+          <div className="w-full overflow-hidden relative md:py-10 sm:py-5">
         {/* Scrolling container */}
         <div className="flex items-center w-max animate-scroll-x space-x-10">
           {[
@@ -165,7 +165,7 @@ const Pricing = () => {
               "/img-8.png",
             ]) // duplicate for seamless loop
             .map((src, index) => (
-              <div key={index} className="w-32 h-20 relative flex-shrink-0">
+              <div key={index} className="md:w-32 md:h-20 sm:w-20 sm:h-10 relative flex-shrink-0">
                 <Image src={src} alt={`Partner logo ${index}`} fill className="object-contain" />
               </div>
             ))}
@@ -175,9 +175,9 @@ const Pricing = () => {
       </div>
 
       <div className="w-full">
-      <h2 className="text-4xl text-tertiary-1 font-semibold mb-4">Frequently Asked Questions</h2>
+      <h2 className="md:text-4xl sm:text-2xl text-tertiary-1 font-semibold mb-4">Frequently Asked Questions</h2>
         <div className="w-full flex items-center md:flex-row sm:flex-col mt-10 gap-x-10">
-          <div className="lg:w-[40%] sm:w-0">
+          <div className="md:w-[40%] sm:w-0">
             <Image
                 src="/image-32.png"
                 alt="MyMedicare"
@@ -189,9 +189,9 @@ const Pricing = () => {
             />
           </div>
           {/* FAQ Section */}
-        <div className="md:w-[60%] w-full space-y-4">
+        <div className="md:w-[60%] w-full md:space-y-4 sm:space-y-2">
           {faq.map((item, index) => (
-            <div key={index} className="border-b-2 hover:bg-secondary-2 border-tertiary-1 p-4 transition-all duration-300">
+            <div key={index} className="border-b-2 hover:bg-secondary-2 border-tertiary-1 md:p-4 sm:p-2 transition-all duration-300">
               <button
                 className="w-full text-left flex justify-between items-center font-medium cursor-pointer text-lg"
                 onClick={() => toggleFAQ(index)}
