@@ -17,7 +17,8 @@ import {
     country_code: string,
     phone: string,
     password: string,
-    speciality_id: string
+    speciality_id: string,
+    profile_picture: string,
   }
   
   interface AuthState {

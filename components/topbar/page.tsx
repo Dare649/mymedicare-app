@@ -91,20 +91,13 @@ const Topbar = () => {
               <div className="flex flex-col">
                 <h2 className="text-primary-1 font-bold capitalize text-md">welcome,</h2>
                 <h3 className="capitalize text-primary-1">
-                  {user?.role === "admin" || user?.role === "business" ? (
-                    <span>{user?.business_name}</span>
-                  ) : (
-                    <>
-                      <span>{user?.first_name} </span>
-                      <span>{user?.last_name}</span>
-                    </>
-                  )}
+                  {user?.name}
                 </h3>
 
               </div>
               <div className="w-10 h-10 rounded-full overflow-hidden">
                 <Image
-                  src={user?.user_img || "/logo.png"}
+                  src={user?.profile_picture || "/logo.png"}
                   alt="stonepay-admin-app"
                   width={50}
                   height={50}
