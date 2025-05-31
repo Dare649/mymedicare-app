@@ -1,3 +1,10 @@
+import { LuLayoutDashboard } from "react-icons/lu";
+import { MdOutlineCalendarMonth, MdOutlineFindInPage } from "react-icons/md";
+import { GiMedicines } from "react-icons/gi";
+import { CiWallet, CiSettings } from "react-icons/ci";
+import { PiProjectorScreenChartThin, PiCoinsLight } from "react-icons/pi";
+import { CgProfile } from "react-icons/cg";
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 
 
 export const nav = [
@@ -15,6 +22,95 @@ export const nav = [
     },
     
 ];
+
+
+
+export const patientNav = [
+    {
+        title: 'dashboard',
+        icon: <LuLayoutDashboard size={25}/>,
+        path: "/patient/dashboard"
+    },
+
+    {
+        title: "schedules",
+        icon: <MdOutlineCalendarMonth size={25}/>,
+        path: "/patient/schedules"
+    },
+    {
+        title: "records",
+        icon: <PiProjectorScreenChartThin size={25}/>,
+        path: "/patient/records"
+    },
+    {
+        title: "medications",
+        icon: <GiMedicines size={25}/>,
+        path: "/patient/medications"
+    },
+    {
+        title: "transactions",
+        icon: <CiWallet size={25}/>,
+        path: "/patient/transactions"
+    },
+    {
+        title: "settings",
+        icon: <CiSettings size={25}/>,
+        path: "/patient/settings",
+        gap: true
+    },
+]
+
+
+
+export const professionalNav = [
+    {
+        title: "dashboard",
+        icon: <LuLayoutDashboard size={25}/>,
+        path: "/doctor/dashboard"
+    },
+    {
+        title: "schedule",
+        icon: <MdOutlineCalendarMonth size={25}/>,
+        path: "/doctor/schedule"
+    },
+    {
+        title: "people",
+        icon: <CgProfile size={25}/>,
+        path: "/doctor/people",
+    },
+    {
+        title: "chat",
+        icon: <IoChatbubbleEllipsesOutline size={25}/>,
+        path: "/doctor/chat",
+    },
+]
+
+
+export const adminNav = [
+    {
+        title: "dashboard",
+        icon: <LuLayoutDashboard size={25}/>,
+        path: "/doctor/dashboard"
+    },
+    {
+        title: "schedule",
+        icon: <MdOutlineCalendarMonth size={25}/>,
+        path: "/doctor/schedule"
+    },
+    {
+        title: "people",
+        icon: <CgProfile size={25}/>,
+        path: "/doctor/people",
+    },
+    {
+        title: "chat",
+        icon: <IoChatbubbleEllipsesOutline size={25}/>,
+        path: "/doctor/chat",
+    },
+]
+
+
+
 
 export const heroText = [
     'quick access', 'healthcare', 'monitoring', 'personalized', 'technology'

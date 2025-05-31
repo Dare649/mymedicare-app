@@ -55,10 +55,18 @@ const Navigation = () => {
             ))}
           </div>
         <div className="flex flex-row items-center justify-end gap-x-4">
-          <h2 className="capitalize font-bold cursor-pointer text-lg hover:text-white hover:bg-primary-5 text-primary-5 border-2 rounded-4xl py-3 px-5 border-primary-5">sign in</h2>
-          <button className="bg-primary-5 hover:border-2 hover:border-primary-5 cursor-pointer hover:bg-transparent hover:text-primary-5 font-semibold text-white capitalize rounded-4xl text-center p-3">
+          <Link
+            href={'/auth/sign-in'} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="capitalize font-bold cursor-pointer text-lg hover:text-white hover:bg-primary-5 text-primary-5 border-2 rounded-4xl py-3 px-5 border-primary-5">sign in</Link>
+          <Link 
+            href={'/auth/sign-up'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-5 hover:border-2 hover:border-primary-5 cursor-pointer hover:bg-transparent hover:text-primary-5 font-semibold text-white capitalize rounded-4xl text-center p-3">
             create an account
-          </button>
+          </Link>
         </div>
         </div>
       </div>
@@ -118,6 +126,19 @@ const Navigation = () => {
                     </Link>
                   ))
                 }
+
+                <Link
+                  href={'/auth/sign-in'} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 flex items-center gap-x-3 border-b-2 border-primary-5 cursor-pointer focus:text-primary-1 font-semibold text-primary-5 capitalize">sign in</Link>
+                <Link 
+                  href={'/auth/sign-up'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 flex items-center gap-x-3 border-b-2 border-primary-5 cursor-pointer focus:text-primary-1 font-semibold text-primary-5 capitalize">
+                  create an account
+                </Link>
               </div>
 
               {/* <div 
@@ -127,6 +148,21 @@ const Navigation = () => {
                   <span><IoLogOutOutline size={25}/></span>
                   <span>{ isLoading ? 'loading' : 'sign out'}</span>
                 </button>
+              </div> */}
+
+              {/* <div className="flex flex-col items-center justify-end gap-x-4">
+                <Link
+                  href={'/auth/sign-in'} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="capitalize font-bold cursor-pointer text-lg hover:text-white hover:bg-primary-5 text-primary-5 border-2 rounded-4xl py-3 px-5 border-primary-5">sign in</Link>
+                <Link 
+                  href={'/auth/sign-up'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary-5 hover:border-2 hover:border-primary-5 cursor-pointer hover:bg-transparent hover:text-primary-5 font-semibold text-white capitalize rounded-4xl text-center p-3">
+                  create an account
+                </Link>
               </div> */}
 
               {/* Close icon */}

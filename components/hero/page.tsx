@@ -5,6 +5,7 @@ import { SiMoleculer } from "react-icons/si";
 import { heroText } from "@/data/dummy";
 import Card from "../card/page";
 import { MdOutlineLightbulb } from "react-icons/md";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -18,6 +19,9 @@ const Hero = () => {
         quality={100}
         priority
       />
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black opacity-30 z-0"></div>
 
       
       {/* Navigation and Hero Content */}
@@ -37,7 +41,11 @@ const Hero = () => {
                     Providing Reliable <br /> and Affordable <br /> Healthcare for <br /> Africa
                 </h2>
                 <p className="font-bold text-white mb-5 md:text-xl sm:text-md">Get access to professional healthcare <br /> providers for a fraction of the cost with <br /> MyMedicare</p>
-                <button className="bg-white md:text-xl sm:text-md font-semibold rounded-4xl text-center md:p-3 sm:p-1 capitalize lg:w-[40%] sm:w-full">download the app</button>
+                <Link 
+                href={'https://play.google.com/store/apps/details?id=com.mymedicare.app'} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white md:text-xl sm:text-md font-semibold rounded-4xl text-center md:p-3 sm:p-1 capitalize lg:w-[40%] sm:w-full">download the app</Link>
             </div>
             <div className="lg:w-[50%] sm:w-full">
                 <div className="flex flex-col mt-[32%]">
