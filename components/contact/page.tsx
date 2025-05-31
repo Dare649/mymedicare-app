@@ -17,30 +17,30 @@ const Contact = () => {
   return (
     <div className="w-full lg:p-10 sm:p-3">
       <div className="w-full flex lg:flex-row sm:flex-col gap-y-10">
-  {/* Left Text */}
-  <h2 className="text-tertiary-1 font-bold md:text-4xl sm:text-3xl md:w-[50%] sm:w-full">
-    Transform your wellness journey with <br />MyMedicare, 
-    <span className="text-secondary-6">
-      with personalized health <br /> insights and expert guidance, available <br />anytime, anywhere.
-    </span>
-  </h2>
+        {/* Left Text */}
+        <h2 className="text-tertiary-1 font-bold md:text-4xl sm:text-3xl md:w-[50%] sm:w-full">
+          Transform your wellness journey with <br />MyMedicare, 
+          <span className="text-secondary-6">
+            with personalized health <br /> insights and expert guidance, available <br />anytime, anywhere.
+          </span>
+        </h2>
 
-  {/* Download Section */}
-  <div className="md:w-[50%] sm:w-full flex flex-col justify-center lg:items-end sm:items-start">
-    <p className="text-secondary-5 leading-relaxed tracking-wider text-left">
-      Begin your health journey with <br /> MyMedicare today. Empower yourself <br />
-      with control over your health, your data <br /> and your wellness.
-    </p>
-    <Link
-      href={'https://play.google.com/store/apps/details?id=com.mymedicare.app'}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border-2 border-tertiary-1 rounded-4xl p-5 mt-5 text-tertiary-1 hover:border-0 hover:bg-tertiary-1 hover:text-white md:w-[50%] sm:w-full text-center font-semibold cursor-pointer"
-    >
-      Download our app
-    </Link>
-  </div>
-</div>
+        {/* Download Section */}
+        <div className="md:w-[50%] sm:w-full flex flex-col justify-center lg:items-end sm:items-start">
+          <p className="text-secondary-5 leading-relaxed tracking-wider text-left">
+            Begin your health journey with <br /> MyMedicare today. Empower yourself <br />
+            with control over your health, your data <br /> and your wellness.
+          </p>
+          <Link
+            href={'https://play.google.com/store/apps/details?id=com.mymedicare.app'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-2 border-tertiary-1 rounded-4xl p-5 mt-5 text-tertiary-1 hover:border-0 hover:bg-tertiary-1 hover:text-white md:w-[50%] sm:w-full text-center font-semibold cursor-pointer"
+          >
+            Download our app
+          </Link>
+        </div>
+      </div>
 
       <div className="w-full md:mt-28 sm:mt-10"> 
           <div className="flex sm:float-start md:float-none md:flex-row sm:flex-col gap-5 items-center justify-between">
