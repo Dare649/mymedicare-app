@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from "next/image";
 import { toast } from 'react-toastify';
 import { IoKeyOutline } from "react-icons/io5";
@@ -12,16 +12,18 @@ import { verifyOtp, resendOtp } from '@/redux/slice/auth/auth';
 
 interface FormState {
   email: string;
-  otp: string;
+  token: string;
 }
 
 const VeriyOtp = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const isLoading = useSelector((state: RootState) => state.loading.isLoading);
+  const searchParams = useSearchParams();
+  const email = searchParams.get('email') || '';
   const [formData, setFormData] = useState<FormState>({
-    email: '',
-    otp: '',
+    email,
+    token: '',
   });
 
   // OTP input refs for auto focus
@@ -32,47 +34,40 @@ const VeriyOtp = () => {
     useRef<HTMLInputElement>(null),
   ];
 
-  // Retrieve email from localStorage when component mounts
-  useEffect(() => {
-    const storedEmail = localStorage.getItem("userEmail");
-    if (storedEmail) {
-      setFormData((prev) => ({ ...prev, email: storedEmail }));
-    }
-  }, []);
 
-  // Handle OTP input changes
+  // Handle token input changes
   const handleOtpChange = (index: number, value: string) => {
-    if (!/^[0-9]?$/.test(value)) return; // Only allow single digit
-    let otpArr = formData.otp.split('');
-    otpArr[index] = value;
-    const otp = otpArr.join('').padEnd(4, '');
-    setFormData((prev) => ({ ...prev, otp }));
+  if (!/^[0-9]?$/.test(value)) return; // Only allow single digit
+  let otpArr = formData.token.split('');
+  otpArr[index] = value;
+  const token = otpArr.join('').padEnd(4, '');
+  setFormData((prev) => ({ ...prev, token }));
 
-    // Move focus to next input if value entered
-    if (value && index < 3) {
-      otpRefs[index + 1].current?.focus();
-    }
-    // Move focus to previous input if value cleared
-    if (!value && index > 0) {
-      otpRefs[index - 1].current?.focus();
-    }
-  };
+  // Move focus to next input if value entered
+  if (value && index < 3) {
+    otpRefs[index + 1].current?.focus();
+  }
+  // Move focus to previous input if value cleared
+  if (!value && index > 0) {
+    otpRefs[index - 1].current?.focus();
+  }
+};
 
-  // Handle paste event for OTP
-  const handleOtpPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-    const pasted = e.clipboardData.getData('Text').replace(/\D/g, '').slice(0, 4);
-    if (pasted.length === 4) {
-      setFormData((prev) => ({ ...prev, otp: pasted }));
-      // Set values in inputs
-      setTimeout(() => {
-        otpRefs.forEach((ref, idx) => {
-          if (ref.current) ref.current.value = pasted[idx] || '';
-        });
-        otpRefs[3].current?.focus();
-      }, 0);
-    }
-    e.preventDefault();
-  };
+// handle paste token
+const handleOtpPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+  const pasted = e.clipboardData.getData('Text').replace(/\D/g, '').slice(0, 4);
+  if (pasted.length === 4) {
+    setFormData((prev) => ({ ...prev, token: pasted }));
+    // Set values in inputs
+    setTimeout(() => {
+      otpRefs.forEach((ref, idx) => {
+        if (ref.current) ref.current.value = pasted[idx] || '';
+      });
+      otpRefs[3].current?.focus();
+    }, 0);
+  }
+  e.preventDefault();
+};
 
   // Handle OTP verification
   const handleVerifyOtp = async (event: React.FormEvent) => {
@@ -83,15 +78,11 @@ const VeriyOtp = () => {
       const result = await dispatch(verifyOtp(formData) as any).unwrap();
 
       if (result) {
-        toast.success("OTP verification successful!");
-
-        // Remove email from localStorage after successful verification
-        localStorage.removeItem("userEmail");
-
+        toast.success(result.message);
         router.push("/auth/sign-in");
       }
-    } catch (error) {
-      toast.error("OTP verification failed!");
+    } catch (error: any) {
+      toast.success(error.message);
     } finally {
       dispatch(stopLoading());
     }
@@ -140,17 +131,19 @@ const VeriyOtp = () => {
             <div className="w-full flex justify-center gap-3 mb-5">
               {[0, 1, 2, 3].map((idx) => (
                 <input
+       
                   key={idx}
                   ref={otpRefs[idx]}
                   type="text"
                   inputMode="numeric"
                   maxLength={1}
-                  value={formData.otp[idx] || ''}
+                  value={formData.token[idx] || ''}
                   onChange={e => handleOtpChange(idx, e.target.value)}
                   onPaste={handleOtpPaste}
                   className="w-14 h-14 text-center text-2xl border-2 border-secondary-6 rounded-lg outline-none focus:border-primary-5 bg-transparent"
                   name={`otp-${idx}`}
                   autoFocus={idx === 0}
+
                 />
               ))}
               

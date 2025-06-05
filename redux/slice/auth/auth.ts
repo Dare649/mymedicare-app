@@ -17,15 +17,31 @@ export const signIn = createAsyncThunk(
 
 // get signed in user
 export const getSignedInUser = createAsyncThunk(
-    "auth/getSignedInUser",
-    async (_, { rejectWithValue }) => {
-        try {
-            const response = await axiosInstance.get("/api/v1/auth/signed_in_user");
-            return response.data;
-        } catch (error: any) {
-            return rejectWithValue(error.response?.data || "Failed to get signed in user, try again.");
-        }
+  "auth/getSignedInUser",
+  async (userRole: "patient" | "professional" | "other", { rejectWithValue }) => {
+    try {
+      let endpoint = "";
+
+      // Determine which API to call based on role
+      switch (userRole) {
+        case "patient":
+          endpoint = "/api/patient";
+          break;
+        case "professional":
+          endpoint = "/api/doctor";
+          break;
+        default:
+          endpoint = "/api/other";
+      }
+
+      const response = await axiosInstance.get(endpoint);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(
+        error.response?.data || "Failed to get signed-in user, try again."
+      );
     }
+  }
 );
 
 // Sign Up
@@ -55,9 +71,9 @@ export const signUp = createAsyncThunk(
 // Verify OTP
 export const verifyOtp = createAsyncThunk(
     "auth/verifyOtp",
-    async (data: { email: string; otp: string }, { rejectWithValue }) => {
+    async (data: { email: string; token: string }, { rejectWithValue }) => {
         try {
-            const response = await axiosInstance.post("/api/v1/auth/verify_otp", data);
+            const response = await axiosInstance.post("/api/email/verify", data);
             return response.data;
         } catch (error: any) {
             return rejectWithValue(error.response?.data || "Failed to verify OTP, try again.");

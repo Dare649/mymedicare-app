@@ -20,22 +20,25 @@ const Sidebar = () => {
 
 
   useEffect(() => {
-    const fetchUser = async () => {
-      dispatch(startLoading());
-  
-      try {
-    
-        await dispatch(getSignedInUser()).unwrap();
-  
-      } catch (error: any) {
-        toast.error("Failed to fetch product details.");
-      } finally {
-        dispatch(stopLoading());
+  // If user is not in Redux, try to get from localStorage
+    let currentUser = user;
+    if (!currentUser && typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      console.log('login user', storedUser);
+      if (storedUser) {
+        currentUser = JSON.parse(storedUser);
       }
-    };
-  
-    fetchUser();
-  }, [dispatch]); 
+    }
+
+    if (currentUser && typeof currentUser.role === "string") {
+      const allowedRoles = ["patient", "professional", "other"] as const;
+      if (allowedRoles.includes(currentUser.role as any)) {
+        dispatch(getSignedInUser(currentUser.role as "patient" | "professional"));
+      } else {
+        dispatch(getSignedInUser("other"));
+      }
+    }
+  }, [dispatch, user]);
 
   // function for sign out
   const handleSignout = (event: React.FormEvent) => {
@@ -50,7 +53,7 @@ const Sidebar = () => {
     }, 3000)
   }
   return (
-    <div className="w-full h-full border-r-2 border-primary-1 shadow-lg flex flex-col items-center justify-between py-5">
+    <div className="w-full h-full border-r-2 border-primary-5 shadow-lg flex flex-col items-center justify-between py-5">
       {/* Navigation Links */}
       <div className="w-full px-3 mt-[10%]">
       {
@@ -60,7 +63,7 @@ const Sidebar = () => {
               <Link
                 href={item.path}
                 key={id}
-                className="p-3 flex items-center gap-x-3 hover:bg-primary-1/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-1 font-semibold text-primary-1 capitalize"
+                className="p-3 flex items-center gap-x-3 hover:bg-primary-5/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-5 font-semibold text-primary-5 capitalize"
               >
                 <h2>{item.icon}</h2>
                 <h2>{item.title}</h2>
@@ -71,7 +74,7 @@ const Sidebar = () => {
               <Link
                 href={item.path}
                 key={id}
-                className="p-3 flex items-center gap-x-3 hover:bg-primary-1/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-1 font-semibold text-primary-1 capitalize"
+                className="p-3 flex items-center gap-x-3 hover:bg-primary-5/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-5 font-semibold text-primary-5 capitalize"
               >
                 <h2>{item.icon}</h2>
                 <h2>{item.title}</h2>
@@ -82,7 +85,7 @@ const Sidebar = () => {
               <Link
                 href={item.path}
                 key={id}
-                className="p-3 flex items-center gap-x-3 hover:bg-primary-1/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-1 font-semibold text-primary-1 capitalize"
+                className="p-3 flex items-center gap-x-3 hover:bg-primary-5/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-5 font-semibold text-primary-5 capitalize"
               >
                 <h2>{item.icon}</h2>
                 <h2>{item.title}</h2>

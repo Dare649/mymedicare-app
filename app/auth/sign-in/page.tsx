@@ -22,7 +22,7 @@ const Signin = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
-  const isLoading = useSelector((state: RootState) => state.loading.isLoading);
+  const isLoading = useSelector((state: RootState) => (state as RootState).loading.isLoading);
   const [formData, setFormData] = useState<FormState>({
     email: "",
     password: "",
@@ -71,7 +71,7 @@ const Signin = () => {
       if (result) {
         toast.success(result.message);
         
-        const userRole = result?.data?.data?.role;
+        const userRole = result?.data?.user?.role;
   
         if (!userRole) {
           toast.error("Unable to determine user role");

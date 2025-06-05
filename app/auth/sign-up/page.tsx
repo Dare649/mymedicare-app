@@ -67,7 +67,7 @@ const Signup = () => {
     try {
       const response = await dispatch(signUp(formData)).unwrap();
       toast.success(response.message);
-      router.push('/auth/verify-otp');
+      router.push(`/auth/verify-otp?email=${formData.email}`);
     } catch (error: any) {
       toast.error(error.message);
     } finally {

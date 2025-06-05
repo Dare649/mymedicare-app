@@ -124,7 +124,7 @@ const PatientSignup: React.FC<PatientSignupProps> = ({ formData, onChange }) => 
         <div className="flex items-center gap-2 border-b-2 border-tertiary-1 focus-within:border-primary-5 p-2">
           <MdOutlineEmail size={20} className="text-gray-400" />
           <input
-            type="email"
+            type="text"
             name="email"
             value={formData.email}
             onChange={(e) => handleChange('email', e.target.value)}

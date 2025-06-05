@@ -59,9 +59,14 @@ import {
         })
         .addCase(signIn.fulfilled, (state, action) => {
           state.signInStatus = "succeeded";
-          state.token = action.payload.token.access_token;
-          state.user = action.payload.user; // Save user info here
-          localStorage.setItem("token", action.payload.token.access_token);
+          // The payload structure is: { message, status, data: { user, token } }
+          const { user, token } = action.payload.data;
+          state.token = token;
+          state.user = user;
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+          console.log('login user', user);
+          console.log('login token', token);
         })
         .addCase(signIn.rejected, (state, action) => {
           state.signInStatus = "failed";

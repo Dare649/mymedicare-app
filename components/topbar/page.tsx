@@ -23,23 +23,26 @@ const Topbar = () => {
 
 
   useEffect(() => {
-      const fetchUser = async () => {
-        dispatch(startLoading());
-    
-        try {
-          // Fetch categories first
-          await dispatch(getSignedInUser()).unwrap();
-    
-        } catch (error: any) {
-          toast.error("Failed to fetch product details.");
-          console.error(error);
-        } finally {
-          dispatch(stopLoading());
-        }
-      };
-    
-      fetchUser();
-    }, [dispatch]); 
+  // If user is not in Redux, try to get from localStorage
+    let currentUser = user;
+    if (!currentUser && typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      console.log('login user', storedUser);
+      if (storedUser) {
+        currentUser = JSON.parse(storedUser);
+      }
+    }
+
+    if (currentUser && typeof currentUser.role === "string") {
+      const allowedRoles = ["patient", "professional", "other"] as const;
+      if (allowedRoles.includes(currentUser.role as any)) {
+        dispatch(getSignedInUser(currentUser.role as "patient" | "professional"));
+      } else {
+        dispatch(getSignedInUser("other"));
+      }
+    }
+  }, [dispatch, user]);
+
 
 
   // function for sign out
@@ -76,12 +79,12 @@ const Topbar = () => {
       <div className="hidden lg:flex">
         <div className='w-full border-b-2 border-primary-1 py-2 px-5 shadow-lg fixed top-0 z-30 bg-white'>
           <div className='w-full flex items-center justify-between'>
-            <div className="w-[15%]">
+            <div className="w-[20%]">
               <Image
-                src={'/logo.png'}
+                src={'/logo-2.png'}
                 alt="stonepay-admin-app"
-                width={100}
-                height={100}
+                width={70}
+                height={70}
                 className="w-full h-full object-cover"
                 quality={100}
                 priority

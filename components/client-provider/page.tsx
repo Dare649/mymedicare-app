@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "@/redux/store";
@@ -11,6 +12,7 @@ import MainLayout from "@/components/main-layout/page";
 
 export default function ClientProviders({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -20,13 +22,14 @@ export default function ClientProviders({ children }: { children: ReactNode }) {
 
   // List of pages that should NOT be wrapped with MainLayout
   const excludedPaths = ["/", "/auth/sign-up", "/auth/sign-in", "/auth/verify-otp", "/error"];
+  const isExcluded = excludedPaths.includes(pathname);
 
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <LoadingOverlay />
         <ToastContainer position="top-center" autoClose={3000} />
-        {excludedPaths ? children : <MainLayout>{children}</MainLayout>}
+        {isExcluded ? children : <MainLayout>{children}</MainLayout>}
       </PersistGate>
     </Provider>
   );
