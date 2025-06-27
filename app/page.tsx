@@ -1,5 +1,6 @@
 'use client';
 
+import Navigation from "@/components/nav/page";
 import About from "@/components/about/page";
 import Hero from "@/components/hero/page";
 import Features from "@/components/features/page";
@@ -12,13 +13,14 @@ import Contact from "@/components/contact/page";
 const Home = () => {
   return (
     <div className='w-full'>
-      {/* home section */}
-      <section id="home" className="w-full">
+      
+      <section id="home" className="w-full lg:px-[120px] sm:px-0">
+        <Navigation />
         <Hero/>
       </section>
 
       {/* about section */}
-      <section id="about" className="w-full">
+      <section id="about" className="w-full ">
         <About/>
         <Features/>
         <Pricing/>
