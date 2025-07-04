@@ -20,28 +20,26 @@ const Topbar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector((state: RootState) => state.loading.isLoading);
   const user = useSelector((state: RootState) => state.auth.user);
+  console.log(user);
 
 
   useEffect(() => {
-  // If user is not in Redux, try to get from localStorage
-    let currentUser = user;
-    if (!currentUser && typeof window !== "undefined") {
+    // Only run on first mount
+    if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
-      console.log('login user', storedUser);
       if (storedUser) {
-        currentUser = JSON.parse(storedUser);
-      }
-    }
+        const currentUser = JSON.parse(storedUser);
 
-    if (currentUser && typeof currentUser.role === "string") {
-      const allowedRoles = ["patient", "professional", "other"] as const;
-      if (allowedRoles.includes(currentUser.role as any)) {
-        dispatch(getSignedInUser(currentUser.role as "patient" | "professional"));
-      } else {
-        dispatch(getSignedInUser("other"));
+        const role = currentUser?.role;
+        const allowedRoles = ["patient", "doctor", "sub_admin"] as const;
+
+        if (role && allowedRoles.includes(role)) {
+          dispatch(getSignedInUser(role as "patient" | "doctor" | "sub_admin"));
+        }
       }
     }
-  }, [dispatch, user]);
+  }, [dispatch]); // Remove `user` from deps
+
 
 
 
@@ -77,37 +75,31 @@ const Topbar = () => {
     <div className="w-full">
       {/* desktop view */}
       <div className="hidden lg:flex">
-        <div className='w-full border-b-2 border-primary-1 py-2 px-5 shadow-lg fixed top-0 z-30 bg-white'>
+        <div className='w-[80%] border-b-2 border-secondary-4 p-5 fixed top-0 z-30 bg-white overflow-hidden'>
           <div className='w-full flex items-center justify-between'>
-            <div className="w-[20%]">
-              <Image
-                src={'/logo-2.png'}
-                alt="stonepay-admin-app"
-                width={70}
-                height={70}
-                className="w-full h-full object-cover"
-                quality={100}
-                priority
-              />
+            <div>
+              <h2 className="first-letter:capitalize font-[400] text-[14px] text-[#1E293B]">welcom back,</h2>
+              <h2 className="capitalize text-[20px] font-[500] text-[#1E293B]">{user?.name}</h2>
             </div>
-            <div className="flex items-center gap-x-3">
-              <div className="flex flex-col">
-                <h2 className="text-primary-1 font-bold capitalize text-md">welcome,</h2>
-                <h3 className="capitalize text-primary-1">
-                  {user?.name}
-                </h3>
-
-              </div>
-              <div className="w-10 h-10 rounded-full overflow-hidden">
+            <div className="flex items-center gap-x-[12px]">
+              <div className="w-14 h-14 rounded-full">
                 <Image
-                  src={user?.profile_picture || "/logo.png"}
-                  alt="stonepay-admin-app"
+                  src={user?.profile_picture || "/doc-re.png"}
+                  alt="mymedicare-app"
                   width={50}
                   height={50}
                   className="w-full h-full object-cover rounded-full"
                   quality={100}
                   priority
                 />
+              </div>
+              <div className="flex flex-col">
+                <h3 className="capitalize text-tertiary-1 text-[14px]">
+                  {user?.name}
+                </h3>
+                <div className="bg-[#0F973D] w-[44px] p-1 rounded-lg flex items-center justify-center">
+                  <h2 className="capitalize text-white text-[10px]">{user?.role}</h2>
+                </div>
               </div>
             </div>
           </div>

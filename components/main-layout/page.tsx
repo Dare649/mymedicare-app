@@ -4,32 +4,30 @@ import React, { ReactNode } from "react";
 import Topbar from "@/components/topbar/page";
 import Sidebar from "@/components/sideBar/page";
 
-
-interface BusinessLayoutProps {
+interface MainLayoutProps {
   children: ReactNode;
 }
 
-const BusinessLayout: React.FC<BusinessLayoutProps> = ({ children }) => {
- 
+const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col h-screen">
-      <Topbar />
-      <div className="flex flex-1">
-        {/* Sidebar */}
-        <div className="hidden lg:flex lg:w-[20%] fixed left-0 lg:top-[8%] h-full bg-white overflow-y-auto">
-          <Sidebar />
-        </div>
+    <div className="flex h-screen">
+      {/* Sidebar - fixed to the left */}
+      <aside className="hidden lg:flex lg:w-[20%] fixed top-0 left-0 h-full bg-white z-40 shadow-md">
+        <Sidebar />
+      </aside>
+
+      {/* Main Content Area */}
+      <div className="flex-1 lg:ml-[20%] w-full flex flex-col">
+        {/* Topbar */}
+        <Topbar />
 
         {/* Main Content */}
-        <main className="flex-1 lg:ml-[20%] lg:p-10 sm:p-5 sm:mt-20">
-          
-          <div className="mt-5 ">
-            {children}
-          </div>
+        <main className="flex-1 lg:mt-26 sm:mt-20 lg:p-5 sm:p-5">
+          {children}
         </main>
       </div>
     </div>
   );
 };
 
-export default BusinessLayout;
+export default MainLayout;

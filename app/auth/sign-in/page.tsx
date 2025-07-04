@@ -80,7 +80,7 @@ const Signin = () => {
   
       // Navigate based on role
       switch (userRole) {
-        case "admin":
+        case "sub_admin":
           router.push("/admin/dashboard");
           break;
         case "patient":

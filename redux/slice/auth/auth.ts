@@ -18,7 +18,7 @@ export const signIn = createAsyncThunk(
 // get signed in user
 export const getSignedInUser = createAsyncThunk(
   "auth/getSignedInUser",
-  async (userRole: "patient" | "professional" | "other", { rejectWithValue }) => {
+  async (userRole: "patient" | "doctor" | "sub_admin", { rejectWithValue }) => {
     try {
       let endpoint = "";
 
@@ -27,15 +27,15 @@ export const getSignedInUser = createAsyncThunk(
         case "patient":
           endpoint = "/api/patient";
           break;
-        case "professional":
+        case "doctor":
           endpoint = "/api/doctor";
           break;
         default:
-          endpoint = "/api/other";
+          endpoint = "/api/sub_admin";
       }
 
       const response = await axiosInstance.get(endpoint);
-      return response.data;
+      return response.data.data;
     } catch (error: any) {
       return rejectWithValue(
         error.response?.data || "Failed to get signed-in user, try again."

@@ -20,26 +20,22 @@ const Sidebar = () => {
   const user = useSelector((state: RootState) => state.auth.user);
 
   useEffect(() => {
-    // Prevent infinite loop of fetches
-    if (!user) {
-      let currentUser = null;
+    let currentUser = user;
 
-      if (typeof window !== "undefined") {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-          currentUser = JSON.parse(storedUser);
-        }
-      }
-
-      if (currentUser?.role) {
-        const validRoles = ["patient", "doctor"];
-        const normalizedRole = currentUser.role === "doctor" ? "doctor" : currentUser.role;
-        const roleToUse = validRoles.includes(normalizedRole) ? normalizedRole : "patient"; // default to patient if invalid
-        dispatch(getSignedInUser(roleToUse as "patient" | "doctor"));
+    if (!currentUser && typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        currentUser = JSON.parse(storedUser);
       }
     }
-    // dependency array intentionally left empty to run only once
-  }, []);
+
+    if (currentUser?.role) {
+      const validRoles = ["patient", "doctor", ];
+      const normalizedRole = currentUser.role === "doctor" ? "doctor" : currentUser.role;
+      const roleToUse = validRoles.includes(normalizedRole) ? normalizedRole : "other";
+      dispatch(getSignedInUser(roleToUse as "patient" | "doctor"));
+    }
+  }, [dispatch, user]);
 
   const handleSignout = (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,7 +71,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-full h-full border-r-2 border-secondary-4 shadow-lg flex flex-col justify-between py-5 relative">
+    <div className="w-full h-full border-r-2 border-secondary-5 shadow-lg flex flex-col justify-between py-5 relative">
       {/* Logo */}
       <div className="px-5">
         <div className="w-[160px]">

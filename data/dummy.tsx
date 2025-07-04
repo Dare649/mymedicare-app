@@ -1,10 +1,14 @@
-import { LuLayoutDashboard } from "react-icons/lu";
+import { LuLayoutDashboard, LuUserRound } from "react-icons/lu";
 import { MdOutlineCalendarMonth, MdOutlineFindInPage } from "react-icons/md";
 import { GiMedicines } from "react-icons/gi";
 import { CiWallet, CiSettings } from "react-icons/ci";
 import { PiProjectorScreenChartThin, PiCoinsLight } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import { GoCreditCard } from "react-icons/go";
+import { TbTruckDelivery } from "react-icons/tb";
+
+
 
 
 export const nav = [
@@ -66,22 +70,22 @@ export const professionalNav = [
     {
         title: "dashboard",
         icon: <LuLayoutDashboard size={25}/>,
-        path: "/doctor/dashboard"
+        path: "/professional/dashboard"
     },
     {
         title: "schedule",
         icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/doctor/schedule"
+        path: "/professional/schedule"
     },
     {
         title: "people",
         icon: <CgProfile size={25}/>,
-        path: "/doctor/people",
+        path: "/professional/people",
     },
     {
         title: "chat",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/doctor/chat",
+        path: "/professional/chat",
     },
 ]
 
@@ -90,22 +94,22 @@ export const adminNav = [
     {
         title: "dashboard",
         icon: <LuLayoutDashboard size={25}/>,
-        path: "/doctor/dashboard"
+        path: "/admin/dashboard"
     },
     {
         title: "schedule",
         icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/doctor/schedule"
+        path: "/admin/schedule"
     },
     {
         title: "people",
         icon: <CgProfile size={25}/>,
-        path: "/doctor/people",
+        path: "/admin/people",
     },
     {
         title: "chat",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/doctor/chat",
+        path: "/admin/chat",
     },
 ]
 
@@ -182,4 +186,311 @@ export const footerNav = [
         path: ''
     },
   
+]
+
+
+export const adminDashboardAnalytics = [
+    {
+        title: 'missed appointments',
+        icon: <MdOutlineCalendarMonth size={23.33}/>,
+        figure: '20 appointments',
+        rate: '+80%'
+    },
+    {
+        title: 'user approval',
+        icon: <LuUserRound size={23.33}/>,
+        figure: '20 accounts',
+        rate: '+80%'
+    },
+    {
+        title: 'pending payments',
+        icon: <GoCreditCard size={23.33}/>,
+        figure: '20 payments',
+        rate: '+150%'
+    },
+    {
+        title: 'unfulfiled deliveries',
+        icon: <TbTruckDelivery size={23.33}/>,
+        figure: '20 orders',
+        rate: '+20%'
+    },
+]
+
+
+export const adminDashboardSummary = [
+    {
+        title: 'total consultations',
+        icon: <img src="/consultations.png" alt="mymedicare" />,
+        figure: 39001,
+        rate: '+80%'
+    },
+    {
+        title: 'total prescription',
+        icon: <img src="/Outline.png" alt="mymedicare" />,
+        figure: 45,
+        rate: '+80%'
+    },
+    {
+        title: 'active subscriptions',
+        icon: <img src="/subscription.png" alt="mymedicare" />,
+        figure: 392,
+        rate: '+150%'
+    },
+    {
+        title: 'total clients',
+        icon: <img src="/userfour.png" alt="mymedicare" />,
+        figure: 4000,
+        rate: '+20%'
+    },
+    {
+        title: 'investigations',
+        icon: <img src="/cross.png" alt="mymedicare" />,
+        figure: 20,
+        rate: '+20%'
+    },
+]
+
+
+export const partnersTable = [
+    {
+        id: '001',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '002',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Rejected",
+    },
+    {
+        id: '003',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Suspended",
+    },
+    {
+        id: '004',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Suspended",
+    },
+    {
+        id: '005',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Suspended",
+    },
+    {
+        id: '006',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Suspended",
+    },
+    {
+        id: '007',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Suspended",
+    },
+    {
+        id: '008',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Rejected",
+    },
+    {
+        id: '009',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Rejected",
+    },
+    {
+        id: '010',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Rejected",
+    },
+    {
+        id: '011',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '012',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '013',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '014',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '015',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '016',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '017',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '018',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '019',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '020',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '021',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Approved",
+    },
+    {
+        id: '022',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '023',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '024',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '025',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '026',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '027',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '028',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '029',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+    {
+        id: '030',
+        companyName: "AXA Mansard",
+        address: "45 Maple Avenue, Victoria Island, Lagos, Nigeria",
+        contactInfo: "hezekiahpeters@gmail.com, +23490000000",
+        type: "Insurance",
+        status: "Pending",
+    },
+   
 ]

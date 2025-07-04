@@ -126,15 +126,15 @@ import {
 
 
         .addCase(getDoctorSpeciality.pending, (state) => {
-                state.getDoctorSpecialityStatus = "isLoading";
+          state.getDoctorSpecialityStatus = "isLoading";
         })
         .addCase(getDoctorSpeciality.fulfilled, (state, action) => {
-            state.doctorSpecialty = action.payload;
-            state.getDoctorSpecialityStatus = "succeeded";
-          })
+          state.doctorSpecialty = action.payload;
+          state.getDoctorSpecialityStatus = "succeeded";
+        })
         .addCase(getDoctorSpeciality.rejected, (state, action) => {
-            state.getDoctorSpecialityStatus = "failed";
-            state.error = action.error.message ?? "Failed to get request";
+          state.getDoctorSpecialityStatus = "failed";
+          state.error = action.error.message ?? "Failed to get request";
         })
     },
   });
