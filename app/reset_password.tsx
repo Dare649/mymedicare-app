@@ -127,7 +127,7 @@ const ResetPassword = () => {
                 priority
                 />
             </div>
-            <h2 className="text-xl sm:text-lg text-primary-5 text-left font-medium">Welcome, <br /> Sign in to continue.</h2>
+            <h2 className="text-xl sm:text-lg text-primary-5 text-left font-medium">Welcome, <br /> Set your password.</h2>
         </div>
           <Card className='w-full p-5 mt-5'>
             <form
@@ -168,7 +168,7 @@ const ResetPassword = () => {
                 <div className="w-full flex items-center gap-x-2 border-b-2 border-tertiary-1 focus-within:border-primary-5 lg:p-2 sm:p-1 mb-5">
                     <input
                         type={passwordVisible ? 'text' : 'new_password_confirmation'}
-                        placeholder="Enter your new password"
+                        placeholder="Enter your new password confirmation"
                         name="new_password_confirmation"
                         value={formData.new_password_confirmation}
                         onChange={handleChange}
