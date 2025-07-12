@@ -101,11 +101,11 @@ const CreatePartner: React.FC<CreatePartnerProps> = ({ close }) => {
       {/* Header */}
       <div className="flex flex-col items-center text-center mx-auto space-y-2 mb-6">
         <h2 className="text-2xl font-semibold text-[#1E293B]">
-          Generate PIN for Partner
+          Create Partner
         </h2>
-        <p className="text-base font-medium text-[#647488]">
+        {/* <p className="text-base font-medium text-[#647488]">
           Kindly note that PINs are valid for 24 hours only.
-        </p>
+        </p> */}
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4 p-4">
