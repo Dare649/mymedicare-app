@@ -20,17 +20,17 @@ interface FormState {
   new_password_confirmation: string;
 }
 
-const ResetPassword = () => {
+const ResetPassword = ({ params }: { params: { token: string; email: string } }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const router = useRouter();
-  const params = useParams();
+  // const params = useParams();
   const { token, email } = params as { token: string; email: string };
   const dispatch = useDispatch();
   const isLoading = useSelector((state: RootState) => (state as RootState).loading.isLoading);
   const [formData, setFormData] = useState<FormState>({
-    email: decodeURIComponent(email || ''),
-    token: token || '',
+    email: decodeURIComponent(params.email),
+    token: params.token,
     new_password: "",
     new_password_confirmation: "",
   });
