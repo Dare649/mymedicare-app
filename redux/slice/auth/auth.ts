@@ -14,6 +14,25 @@ export const signIn = createAsyncThunk(
     }
 );
 
+// reset password
+export const resetPassword = createAsyncThunk(
+    "auth/resetPassword",
+    async (data: { 
+        email: string; 
+        new_password: string, 
+        new_password_confirmation: string, 
+        token: string, 
+
+    }, { rejectWithValue }) => {
+        try {
+            const response = await axiosInstance.post("/api/password/reset", data);
+            return response.data;
+        } catch (error: any) {
+            return rejectWithValue(error.response?.data || "Failed to sign in, try again.");
+        }
+    }
+);
+
 
 // get signed in user
 export const getSignedInUser = createAsyncThunk(

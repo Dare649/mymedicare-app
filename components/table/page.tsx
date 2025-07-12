@@ -78,7 +78,7 @@ const Table: React.FC<TableProps> = ({
               currentPageData.map((item, index) => (
                 <tr key={index} className="border-t hover:bg-[#F9FAFB]">
                   {columns.map((col) => (
-                    <td key={col.key} className="py-3 px-6 text-[#334155] font-[400] capitalize">
+                    <td key={col.key} className="py-3 px-6 text-[#334155] font-[400]">
                       {item[col.key]}
                     </td>
                   ))}

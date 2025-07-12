@@ -5,7 +5,8 @@ import {
     signIn,
     signUp,
     verifyOtp,
-    getDoctorSpeciality
+    getDoctorSpeciality,
+    resetPassword,
 } from "./auth";
 
   interface Auth {
@@ -26,6 +27,7 @@ import {
     token: string | null;
     signInStatus: "idle" | "isLoading" | "succeeded" | "failed";
     signUpStatus: "idle" | "isLoading" | "succeeded" | "failed";
+    resetPasswordStatus: "idle" | "isLoading" | "succeeded" | "failed";
     verifyOtpStatus: "idle" | "isLoading" | "succeeded" | "failed";
     getDoctorSpecialityStatus: "idle" | "isLoading" | "succeeded" | "failed";
     resendOtpStatus: "idle" | "isLoading" | "succeeded" | "failed";
@@ -39,6 +41,7 @@ import {
     token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
     signInStatus: "idle",
     signUpStatus: "idle",
+    resetPasswordStatus: "idle",
     verifyOtpStatus: "idle",
     resendOtpStatus: "idle",
     getSignedInUserStatus: "idle",
@@ -97,6 +100,19 @@ import {
         .addCase(signUp.rejected, (state, action) => {
           state.signUpStatus = "failed";
           state.error = action.error.message || "Failed to sign up, try again.";
+        })
+
+        // Handle reset password
+        .addCase(resetPassword.pending, (state) => {
+          state.resetPasswordStatus = "isLoading";
+        })
+        .addCase(resetPassword.fulfilled, (state, action) => {
+          state.resetPasswordStatus = "succeeded";
+          state.user = action.payload.user; // Save user info here
+        })
+        .addCase(resetPassword.rejected, (state, action) => {
+          state.resetPasswordStatus = "failed";
+          state.error = action.error.message || "Failed to reset password, try again.";
         })
   
         // Handle OTP verification

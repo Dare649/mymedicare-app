@@ -21,7 +21,7 @@ export default function ClientProviders({ children }: { children: ReactNode }) {
   if (!mounted) return null;
 
   // List of pages that should NOT be wrapped with MainLayout
-  const excludedPaths = ["/", "/auth/sign-up", "/auth/sign-in", "/auth/verify-otp", "/error"];
+  const excludedPaths = ["/", "/auth/sign-up", "/auth/sign-in", "/auth/verify-otp", "/error", "/reset_password"];
   const isExcluded = excludedPaths.includes(pathname);
 
   return (
