@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from "next/image";
 import { MdOutlineMail } from "react-icons/md";
 import { GoEye, GoEyeClosed } from "react-icons/go";
@@ -20,17 +20,16 @@ interface FormState {
   new_password_confirmation: string;
 }
 
-const ResetPassword = ({ params }: { params: { token: string; email: string } }) => {
+const ResetPassword = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const router = useRouter();
-  // const params = useParams();
-  const { token, email } = params as { token: string; email: string };
+  const searchParams = useSearchParams()
   const dispatch = useDispatch();
   const isLoading = useSelector((state: RootState) => (state as RootState).loading.isLoading);
   const [formData, setFormData] = useState<FormState>({
-    email: decodeURIComponent(params.email),
-    token: params.token,
+    email: "",
+    token : "",
     new_password: "",
     new_password_confirmation: "",
   });
@@ -43,6 +42,17 @@ const ResetPassword = ({ params }: { params: { token: string; email: string } })
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+   // Populate email and token from URL after hydration
+  useEffect(() => {
+    const email = searchParams.get('email') || ''
+    const token = searchParams.get('token') || ''
+    setFormData(prev => ({
+      ...prev,
+      email: decodeURIComponent(email),
+      token,
+    }))
+  }, [searchParams])
 
   // Handle form input changes
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
