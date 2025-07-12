@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className='w-full'>
       
-      <section id="home" className="w-full lg:px-[120px] sm:px-0">
+      <section id="home" className="w-full lg:px-[40px] sm:px-0">
         <Navigation />
         <Hero/>
       </section>

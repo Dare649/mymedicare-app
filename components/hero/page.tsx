@@ -11,7 +11,7 @@ const Hero = () => {
       <Image
         src="/hero-section-image.png"
         alt="MyMedicare"
-        className="object-cover lg:rounded-[20px]"
+        className="object-cover lg:rounded-[20px] w-full"
         fill
         quality={100}
         priority
@@ -22,7 +22,7 @@ const Hero = () => {
 
       
       {/* Navigation and Hero Content */}
-      <div className="relative z-10 ">
+      <div className="relative z-10 w-full">
         <div className="flex lg:flex-row sm:flex-col lg:p-[54px] sm:p-5">
             <div className="lg:w-[50%] lg:h-[572px] sm:w-full flex flex-col float-left">
                 <div className="lg:w-[288px] lg:h-[40px] sm:w-full mb-5">

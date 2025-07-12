@@ -97,19 +97,34 @@ export const adminNav = [
         path: "/admin/dashboard"
     },
     {
-        title: "schedule",
+        title: "consultations",
         icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/admin/schedule"
+        path: "/admin/consultations"
     },
     {
-        title: "people",
+        title: "prescriptions",
         icon: <CgProfile size={25}/>,
-        path: "/admin/people",
+        path: "/admin/prescriptions",
     },
     {
-        title: "chat",
+        title: "investigations",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/admin/chat",
+        path: "/admin/investigations",
+    },
+    {
+        title: "users",
+        icon: <IoChatbubbleEllipsesOutline size={25}/>,
+        path: "/admin/users",
+    },
+    {
+        title: "partners",
+        icon: <IoChatbubbleEllipsesOutline size={25}/>,
+        path: "/admin/partners",
+    },
+    {
+        title: "subscriptions",
+        icon: <IoChatbubbleEllipsesOutline size={25}/>,
+        path: "/admin/subscriptions",
     },
 ]
 

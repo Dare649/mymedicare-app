@@ -16,7 +16,7 @@ const Contact = () => {
   
   return (
     <div className="w-full lg:p-10 sm:p-3">
-      <div className="w-full flex lg:flex-row sm:flex-col gap-y-10 lg:px-[120px] sm:px-0">
+      <div className="w-full flex lg:flex-row sm:flex-col gap-y-10 lg:px-[40px] sm:px-0">
         {/* Left Text */}
         <div className="lg:w-[758px] lg:h-[224px] sm:w-full">
           <h2 className="text-tertiary-1 font-[600] lg:text-[40px] sm:text-3xl">
@@ -43,14 +43,14 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="w-full lg:mt-28 sm:mt-10 lg:px-[120px] sm:px-0"> 
+      <div className="w-full lg:mt-28 sm:mt-10 lg:px-[40px] sm:px-0"> 
           <div className="flex sm:float-start lg:float-none lg:flex-row sm:flex-col gap-5 items-center justify-between">
             <Image
               src={'/logo-2.png'}
               alt="stonepay-admin-app"
               width={100}
               height={100}
-              className="lg:w-[577px] object-cover "
+              className="lg:w-[200px] object-cover "
               quality={100}
               priority
             />

@@ -9,7 +9,7 @@ import Image from "next/image";
 const About = () => {
   return (
     <div className='w-full  lg:mt-[200px] sm:mt-20'>
-      <div className="lg:px-[120px] sm:px-3">
+      <div className="lg:px-[40px] sm:px-3">
         <div className='w-full flex lg:flex-row sm:flex-col gap-y-5 '>
             <div className='md:w-[50%] sm:w-full flex flex-col float-left'>
                 <h2 className='lg:text-[48px] sm:text-3xl font-[600] text-[#1E293B]'>Why should you use <br />MyMedicare today?</h2>

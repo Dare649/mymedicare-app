@@ -56,7 +56,7 @@ const Sidebar = () => {
     if (!user) return null;
 
     const navItems =
-      user.role === "admin"
+      user.role === "sub_admin"
         ? adminNav
         : user.role === "doctor" 
         ? professionalNav

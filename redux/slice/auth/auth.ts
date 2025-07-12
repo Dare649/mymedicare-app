@@ -31,7 +31,7 @@ export const getSignedInUser = createAsyncThunk(
           endpoint = "/api/doctor";
           break;
         default:
-          endpoint = "/api/sub_admin";
+          endpoint = "/api/~admin";
       }
 
       const response = await axiosInstance.get(endpoint);

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Features = () => {
   return (
-    <div className='w-full lg:p-10 sm:p-3 lg:px-[120px] sm:px-3 mt-10'>
+    <div className='w-full lg:p-10 sm:p-3 lg:px-[40px] sm:px-3 mt-10'>
       <div className='w-full flex lg:flex-row sm:flex-col items-center lg:gap-[151px] sm:gap-10'>
         <div className='lg:w-[515px] sm:w-full'>
             <h2 className='text-secondary-10 lg:text-[45px] sm:text-4xl font-[600]'>Who is Mymedicare for?</h2>

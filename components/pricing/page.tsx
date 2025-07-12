@@ -16,7 +16,7 @@ const Pricing = () => {
   };
   return (
     <div className='w-full lg:p-10 sm:p-3 sm:mt-20 lg:mt-0'>
-      <div className='w-full flex lg:flex-row items-center justify-between sm:flex-col gap-y-10 lg:px-[120px] sm:px-0'>
+      <div className='w-full flex lg:flex-row items-center justify-between sm:flex-col gap-y-10 lg:px-[40px] sm:px-0'>
         <div className="lg:w-[515px] sm:w-full">
           <h2 className='first-letter:capitalize lg:text-[40px] sm:text-3xl font-[600] text-tertiary-1'>choose the right plan <br />for your health journey</h2>
         </div>
@@ -24,7 +24,7 @@ const Pricing = () => {
           <p className="text-secondary-5 font-[500] text-[20px] first-letter:capitalize">accessible and reliable plans thoughtfully tailored to support  your unique health journey and empower you with personalized care options. </p>
         </div>
       </div>
-      <div className='w-full my-20 flex lg:flex-row sm:flex-col gap-[54px] lg:px-[120px] sm:px-0'>
+      <div className='w-full my-20 flex lg:flex-row sm:flex-col gap-[54px] lg:px-[40px] sm:px-0'>
         <div className="h-[544px]  lg:w-[584px] sm:w-full">
           <Card
               className="bg-secondary-5 w-full h-full"
@@ -68,7 +68,7 @@ const Pricing = () => {
         </div>
         <div className="h-[544px] lg:w-[584px] sm:w-full">
           <Card
-              className="bg-secondary-5 w-full"
+            className="bg-secondary-5 w-full"
           >
             <div className="w-full p-2">
                 <h2 className="capitalize font-[500] text-secondary-10 lg:text-[28px] sm:text-xl">other services</h2>
@@ -115,10 +115,10 @@ const Pricing = () => {
           </Card>
         </div>
       </div>
-      <h2 className="text-tertiary-1 lg:text-[48px] sm:text-4xl font-[600] mb-10 md:mt-0 sm:mt-32 lg:px-[120px] sm:px-0">Empower your health journey with proactive <br />tracking <span className="text-secondary-5">and reduce health risk by up to 78%</span></h2>
+      <h2 className="text-tertiary-1 lg:text-[48px] sm:text-4xl font-[600] mb-10 md:mt-0 sm:mt-32 lg:px-[40px] sm:px-0">Empower your health journey with proactive <br />tracking <span className="text-secondary-5">and reduce health risk by up to 78%</span></h2>
 
 
-      <div className="lg:px-[120px] sm:px-0 lg:h-[638px] sm:h-0">
+      <div className="lg:px-[40px] sm:px-0 lg:h-[638px] sm:h-0">
         <div className="lg:flex sm:hidden w-full h-full relative rounded-4xl overflow-hidden p-10">
           <Image
               src="/Remote-Monitoring-Float.png"
@@ -219,7 +219,7 @@ const Pricing = () => {
 
       </div>
 
-      <div className="lg:px-[120px] sm:px-0 w-full">
+      <div className="lg:px-[40px] sm:px-0 w-full">
         <h2 className="lg:text-[48px] sm:text-3xl text-tertiary-1 font-[600] mb-4">Frequently Asked Questions</h2>
         <div className="w-full flex lg:flex-row sm:flex-col lg:mt-20 sm:mt-10 gap-x-10">
           <div className="lg:w-[432px] lg:h-[528px] sm:h-0 sm:w-0">
@@ -243,7 +243,7 @@ const Pricing = () => {
                 }`}
               >
                 <button
-                  className="w-full lg:h-[28px] sm:h-[38px] text-left flex justify-between items-center font-medium cursor-pointer lg:text-[24px] sm:text-lg font-[500] transition-all duration-300"
+                  className="w-full lg:h-[28px] sm:h-[38px] text-left flex justify-between items-center cursor-pointer lg:text-[24px] sm:text-lg font-[500] transition-all duration-300"
                   onClick={() => toggleFAQ(index)}
                 >
                   {item.qst}

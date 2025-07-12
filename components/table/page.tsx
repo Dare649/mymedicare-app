@@ -78,14 +78,14 @@ const Table: React.FC<TableProps> = ({
               currentPageData.map((item, index) => (
                 <tr key={index} className="border-t hover:bg-[#F9FAFB]">
                   {columns.map((col) => (
-                    <td key={col.key} className="py-3 px-6 text-[#334155] font-[400]">
+                    <td key={col.key} className="py-3 px-6 text-[#334155] font-[400] capitalize">
                       {item[col.key]}
                     </td>
                   ))}
                   <td className="py-3 px-6">
                     <Link 
                         href={viewPath(item.id)}
-                        className='flex items-center bg-secondary-4 rounded-md p-2 text-[#0F172A] cursor-pointer gap-x-1'
+                        className='flex justify-center bg-secondary-4 rounded-md p-2 text-[#0F172A] cursor-pointer gap-x-1'
                     >
                       <IoEyeOutline size={14}/>
                       <h2 className='-mt-1'>view</h2>
