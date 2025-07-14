@@ -72,7 +72,7 @@ const PatientSchedule = () => {
 
   return (
     <section className="p-4 space-y-4">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center cursor-pointer">
         <h2 className="text-xl font-bold">Partners</h2>
         <button
           onClick={handleModal}
