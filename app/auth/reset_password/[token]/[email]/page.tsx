@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, useParams } from 'next/navigation';
 import Image from "next/image";
 import { MdOutlineMail } from "react-icons/md";
 import { GoEye, GoEyeClosed } from "react-icons/go";
@@ -24,9 +24,11 @@ const ResetPassword = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams()
+  const params = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector((state: RootState) => (state as RootState).loading.isLoading);
+  const token = params?.token as string;
+  const email = decodeURIComponent(params?.email as string);
   const [formData, setFormData] = useState<FormState>({
     email: "",
     token : "",
@@ -45,15 +47,16 @@ const ResetPassword = () => {
 
    // Populate email and token from URL after hydration
   useEffect(() => {
-    const email = searchParams.get('email') || ''
-    const token = searchParams.get('token') || ''
-    setFormData(prev => ({
-      ...prev,
-      email: decodeURIComponent(email),
-      token,
-    }))
-  }, [searchParams])
-
+    // Set email and token from route
+    if (token && email) {
+      setFormData(prev => ({
+        ...prev,
+        email,
+        token,
+      }));
+    }
+  }, [token, email]);
+  
   // Handle form input changes
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
