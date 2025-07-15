@@ -37,7 +37,7 @@ export const resetPassword = createAsyncThunk(
 // get signed in user
 export const getSignedInUser = createAsyncThunk(
   "auth/getSignedInUser",
-  async (userRole: "patient" | "doctor" | "sub_admin", { rejectWithValue }) => {
+  async (userRole: "patient" | "doctor" | "sub_admin" | "partner", { rejectWithValue }) => {
     try {
       let endpoint = "";
 
@@ -48,6 +48,9 @@ export const getSignedInUser = createAsyncThunk(
           break;
         case "doctor":
           endpoint = "/api/doctor";
+          break;
+        case "partner":
+          endpoint = "/api/partner";
           break;
         default:
           endpoint = "/api/~admin";

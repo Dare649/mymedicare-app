@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { IoLogOutOutline } from "react-icons/io5";
 
-import { adminNav, patientNav, professionalNav } from "@/data/dummy";
+import { adminNav, patientNav, professionalNav, partnerNav } from "@/data/dummy";
 import { startLoading, stopLoading } from "@/redux/slice/loadingSlice";
 import { getSignedInUser } from "@/redux/slice/auth/auth";
 import { RootState, AppDispatch } from "@/redux/store";
@@ -60,6 +60,8 @@ const Sidebar = () => {
         ? adminNav
         : user.role === "doctor" 
         ? professionalNav
+        : user.role === "partner" 
+        ? partnerNav
         : patientNav;
 
     return navItems.map((item, id) => (

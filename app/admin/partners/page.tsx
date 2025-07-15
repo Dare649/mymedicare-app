@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Table from '@/components/table/page';
-import { partnersTable } from '@/data/dummy';
 import Modal from '@/components/modal/page';
 import CreatePartner from '@/components/admin/partner/create-partner/page';
 import { getAllPartners, getPartner } from '@/redux/slice/admin/partner/partner';

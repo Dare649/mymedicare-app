@@ -89,6 +89,9 @@ const Signin = () => {
         case "doctor":
           router.push("/professional/dashboard");
           break;
+        case "partner":
+          router.push("/partner/dashboard");
+          break;
         default:
           toast.error("Unknown role. Cannot navigate.");
           break;

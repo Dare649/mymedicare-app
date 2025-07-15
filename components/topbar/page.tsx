@@ -31,10 +31,10 @@ const Topbar = () => {
         const currentUser = JSON.parse(storedUser);
 
         const role = currentUser?.role;
-        const allowedRoles = ["patient", "doctor", "sub_admin"] as const;
+        const allowedRoles = ["patient", "doctor", "sub_admin", "partner"] as const;
 
         if (role && allowedRoles.includes(role)) {
-          dispatch(getSignedInUser(role as "patient" | "doctor" | "sub_admin"));
+          dispatch(getSignedInUser(role as "patient" | "doctor" | "sub_admin" | "partner"));
         }
       }
     }
