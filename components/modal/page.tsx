@@ -24,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ visible, children, onClose }) => {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed inset-0 flex justify-end bg-black/50 z-50 lg:p-3 sm:p-2"
+          className="fixed inset-0 flex justify-end bg-black/50 z-50 lg:p-3 sm:p-2 "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -32,7 +32,7 @@ const Modal: React.FC<ModalProps> = ({ visible, children, onClose }) => {
           onClick={(e) => e.target === e.currentTarget && onClose()}
         >
           <motion.div
-            className="bg-white sm:w-full lg:w-[35%] rounded-xl lg:p-5 sm:p-2 shadow-xl"
+            className="bg-white sm:w-full lg:w-[35%] rounded-xl lg:p-5 sm:p-2 shadow-xl overflow-auto"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}

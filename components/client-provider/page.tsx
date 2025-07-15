@@ -20,9 +20,20 @@ export default function ClientProviders({ children }: { children: ReactNode }) {
 
   if (!mounted) return null;
 
-  // List of pages that should NOT be wrapped with MainLayout
-  const excludedPaths = ["/", "/auth/sign-up", "/auth/sign-in", "/auth/verify-otp", "/error", "/auth/reset_password/[token]/[email]"];
-  const isExcluded = excludedPaths.includes(pathname);
+  // Static paths that should NOT be wrapped with MainLayout
+  const excludedPaths = [
+    "/",
+    "/auth/sign-up",
+    "/auth/sign-in",
+    "/auth/verify-otp",
+    "/error",
+  ];
+
+  // Regex pattern to match dynamic reset password route
+  const resetPasswordRegex = /^\/auth\/reset_password\/[^/]+\/[^/]+$/;
+
+  const isExcluded =
+    excludedPaths.includes(pathname) || resetPasswordRegex.test(pathname);
 
   return (
     <Provider store={store}>
