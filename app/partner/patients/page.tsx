@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import Table from '@/components/table/page';
 import Modal from '@/components/modal/page';
-import CreatePartner from '@/components/admin/partner/create-partner/page';
-import { getAllPartners, getPartner } from '@/redux/slice/admin/partner/partner';
+import CreatePatient from '@/components/partner/create-patient/page';
+import { getAllPatient } from '@/redux/slice/partner/patient/patient';
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/redux/store";
@@ -18,14 +18,14 @@ const PatientSchedule = () => {
   const [selectedRow, setSelectedRow] = useState<any>(null);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const allPartner = useSelector((state: RootState) => Array.isArray(state.adminPartner.allPartner) ? state.adminPartner.allPartner : []);
+  const allPartnerPatient = useSelector((state: RootState) => Array.isArray(state.partnerPatient.allPartnerPatient) ? state.partnerPatient.allPartnerPatient : []);
 
   // fetch partners list
   useEffect(() => {
     const fetchPartners = async () => {
       try {
         dispatch(startLoading());
-        await dispatch(getAllPartners()).unwrap();
+        await dispatch(getAllPatient()).unwrap();
       } catch (error: any) {
         toast.error(error.message);
       } finally {
@@ -44,46 +44,52 @@ const PatientSchedule = () => {
 
   const columns = [
     { key: "id", label: "ID" },
-    { key: "name", label: "Company Name" },
-    { key: "email", label: "Email" },
-    { key: "phone", label: "Phone Number" },
-    { key: "type", label: "Type" },
+    { key: "name", label: "PATIENT NAME" },
+    { key: "phone", label: "PHONE NUMBER" },
+    { key: "email", label: "EMAIL ADDRESS" },
     {
-      key: "status",
-      label: "Status",
-      render: (status: string) => {
-        let color = "";
-
-        switch (status) {
-          case "verified":
-            color = "text-green-600";
-            break;
-          case "Rejected":
-            color = "text-red-600";
-            break;
-          default:
-            color = "text-[#334155]";
-        }
-
-        return <span className={`capitalize font-medium ${color}`}>{status}</span>;
-      }
-    }
+      key: 'sex',
+      label: 'GENDER',
+      render: (row: any) => row.sex || 'N/A',
+    },
+    {
+      key: 'dob',
+      label: 'DATE OF BIRTH',
+      render: (row: any) => row.dob || 'N/A',
+    },
+    {
+      key: 'status',
+      label: 'STATUS',
+      render: (row: any) => (
+        <span
+          className={`px-2 py-1 rounded-full text-sm font-medium ${
+            row?.status === 'active'
+              ? 'bg-green-100 text-green-800'
+              : row?.status === 'inactive'
+              ? 'bg-yellow-100 text-yellow-800'
+              : 'bg-gray-200 text-gray-600'
+          }`}
+        >
+          {row?.status || 'N/A'}
+        </span>
+      ),
+    },
   ];
 
   return (
     <section className="p-4 space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold">Partners</h2>
+        <h2 className="text-xl font-bold">Patients</h2>
         <button
           onClick={handleModal}
           className="px-4 py-2 bg-primary-5 text-white rounded-md hover:bg-primary/90 transition cursor-pointer"
         >
-          New Partner
+          Add Patient
         </button>
       </div>
       <Table 
         columns={columns}
-        data={allPartner}
+        data={allPartnerPatient}
       />
 
       {
@@ -92,7 +98,7 @@ const PatientSchedule = () => {
             onClose={handleModal}
             visible={open}
           >
-            <CreatePartner
+            <CreatePatient
               close={handleModal}
             />
           </Modal>
