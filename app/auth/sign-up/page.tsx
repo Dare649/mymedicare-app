@@ -11,9 +11,8 @@ import { signUp } from '@/redux/slice/auth/auth';
 import Tab from '@/components/tabs/page';
 import PatientSignup from '@/components/patient/sign-up/page';
 import ProfessionalSignup from '@/components/professional/sign-up/page';
+import BranchPartnerSignup from '@/components/branch-partner/sign-up/page';
 import Card from '@/components/card/page';
-
-
 
 
 const Signup = () => {
@@ -21,17 +20,24 @@ const Signup = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector((state: RootState) => state.loading.isLoading);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(0);
   const images = ['/image-32.png', '/hospital-queue.jpg', '/hero-section-image.png'];
-  const [selectedRole, setSelectedRole] = useState<'Patient' | 'Professional'>('Patient');
-  const roles = ["Patient", "Professional"];
+  const [selectedRole, setSelectedRole] = useState<'patient' | 'doctor' | 'branch_partner'>('patient');
+  const tabLabels = ['Patient', 'Doctor', 'Branch Partner'];
+  const roleKeys: Record<string, 'patient' | 'doctor' | 'branch_partner'> = {
+    Patient: 'patient',
+    Doctor: 'doctor',
+    'Branch Partner': 'branch_partner',
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    role: "patient",
+    role: "",
     country_code: "",
     phone: "",
     password: "",
-    speciality_id: ""
+    speciality_id: "",
+    referral_code: ""
   });
 
 
@@ -50,22 +56,33 @@ const Signup = () => {
     }));
   };
 
-  const handleTabChange = (index: number) => {
-    const role = roles[index];
-    setSelectedRole(role as 'Patient' | 'Professional');
-    setFormData((prev) => ({
-      ...prev,
-      role: role.toLowerCase(), // 'patient' or 'professional'
-    }));
+  // Convert tab label to form role
+  const getRoleKey = (label: string): 'patient' | 'doctor' | 'branch_partner' => {
+    switch (label.toLowerCase()) {
+      case 'doctor':
+        return 'doctor';
+      case 'branch partner':
+        return 'branch_partner';
+      default:
+        return 'patient';
+    }
   };
+
+  // const handleTabChange = (index: number) => {
+  //   const roleMap = ['patient', 'doctor', 'branch_partner'] as const;
+  //   setSelectedRole(roleMap[index]);
+  // };
 
 
   // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (data: any) => {
     dispatch(startLoading());
     try {
-      const response = await dispatch(signUp(formData)).unwrap();
+      const payload = {
+        ...formData,
+        role: selectedRole, // Include role here
+      };
+      const response = await dispatch(signUp(payload)).unwrap();
       toast.success(response.message);
       router.push(`/auth/verify-otp?email=${formData.email}`);
     } catch (error: any) {
@@ -75,6 +92,19 @@ const Signup = () => {
     }
   };
 
+
+  const renderForm = (label: string) => {
+    const role = getRoleKey(label);
+
+    switch (role) {
+      case 'doctor':
+        return <ProfessionalSignup formData={formData} onChange={handleChange} />;
+      case 'branch_partner':
+        return <BranchPartnerSignup formData={formData} onChange={handleChange} />;
+      default:
+        return <PatientSignup formData={formData} onChange={handleChange} />;
+    }
+  };
 
   return (
     <section className="w-full h-screen flex">
@@ -96,14 +126,11 @@ const Signup = () => {
           <h2 className="text-xl sm:text-lg text-primary-5 text-left font-medium">Welcome, <br /> Sign up to get started.</h2>
         </div>
         <Card className='w-full p-5 mt-5'>
-          <Tab titles={roles} renderContent={(role) => (
-              role === "Patient" ? (
-                <PatientSignup formData={formData} onChange={handleChange} />
-              ) : (
-                <ProfessionalSignup formData={formData} onChange={handleChange} />
-              )
-            )} 
-          />
+          <Tab
+        titles={tabLabels}
+        renderContent={renderForm}
+        onTabChange={(_, label) => setSelectedRole(getRoleKey(label))}
+      />
           <button
             className='w-full bg-primary-5 text-white py-5 rounded-md hover:bg-primary-4 transition duration-200 capitalize font-semibols'
             type='button'

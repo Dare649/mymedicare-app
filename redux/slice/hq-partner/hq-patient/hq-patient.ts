@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "@/utils/axiosInstance";
 
-interface Patient {
+interface HqPatient {
     name : string;
     email : string;
     phone : string;
@@ -10,9 +10,9 @@ interface Patient {
 
 
 // create patient
-export const createPatient = createAsyncThunk(
-    "patient/createPatient",
-    async(data: Patient, { rejectWithValue}) => {
+export const createHqPatient = createAsyncThunk(
+    "hq-patient/createHqPatient",
+    async(data: HqPatient, { rejectWithValue}) => {
         try {
             const res = await axiosInstance.post("/api/partner/add_patient", data);
             return res.data;
@@ -26,11 +26,11 @@ export const createPatient = createAsyncThunk(
 
 
 // get all patient
-export const getAllPatient = createAsyncThunk(
-    "patient/getAllPatient",
+export const getAllHqPatient = createAsyncThunk(
+    "hq-patient/getAllHqPatient",
     async (_, { rejectWithValue}) => {
         try {
-            const res = await axiosInstance.get('/api/partner/get_referred');
+            const res = await axiosInstance.get('/api/partner/get_referred/patient');
             return res.data.data;
         } catch (error: any) {
             return rejectWithValue({
@@ -42,8 +42,8 @@ export const getAllPatient = createAsyncThunk(
 
 
 // get a partner
-export const getPatient = createAsyncThunk(
-    "patient/getPatient",
+export const getHqPatient = createAsyncThunk(
+    "hq-patient/getHqPatient",
     async (uuid: string, { rejectWithValue }) => {
         try {
             const res = await axiosInstance.get(`/api/partner/${uuid}/patient_details`);

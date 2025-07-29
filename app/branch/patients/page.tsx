@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Table from '@/components/table/page';
 import Modal from '@/components/modal/page';
 import CreatePatient from '@/components/partner/create-patient/page';
-import { getAllHqPatient } from '@/redux/slice/hq-partner/hq-patient/hq-patient';
+import { getAllBranchPatient } from '@/redux/slice/branch-partner/branch-patient/branch-patient';
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/redux/store";
@@ -25,7 +25,7 @@ const PatientSchedule = () => {
     const fetchPartners = async () => {
       try {
         dispatch(startLoading());
-        await dispatch(getAllHqPatient()).unwrap();
+        await dispatch(getAllBranchPatient()).unwrap();
       } catch (error: any) {
         toast.error(error.message);
       } finally {

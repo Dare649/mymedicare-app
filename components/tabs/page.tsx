@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 
 interface TabProps {
   titles: string[];
   renderContent: (role: string) => React.ReactNode;
+  onTabChange?: (index: number, role: string) => void;
 }
 
-const Tab: React.FC<TabProps> = ({ titles, renderContent }) => {
+const Tab: React.FC<TabProps> = ({ titles, renderContent, onTabChange }) => {
   const [activeTab, setActiveTab] = useState(0);
-  const activeRole = titles[activeTab];
+  useEffect(() => {
+    onTabChange?.(activeTab, titles[activeTab]);
+  }, [activeTab]);
+
+  
 
   return (
     <div>
@@ -16,10 +23,10 @@ const Tab: React.FC<TabProps> = ({ titles, renderContent }) => {
         {titles.map((title, index) => (
           <button
             key={index}
-            className={`py-2 px-4 ${
+            className={`py-2 px-4 cursor-pointer ${
               activeTab === index ? 'text-primary-5 border-b-2 border-primary-4 font-bold' : 'font-medium text-tertiary-1'
             }`}
-            onClick={() => setActiveTab(index)}
+             onClick={() => setActiveTab(index)}
           >
             {title}
           </button>
@@ -27,7 +34,7 @@ const Tab: React.FC<TabProps> = ({ titles, renderContent }) => {
       </div>
 
       {/* Tab Content */}
-      <div className="mt-4">{renderContent(activeRole)}</div>
+      <div className="mt-4">{renderContent(titles[activeTab])}</div>
     </div>
   );
 };

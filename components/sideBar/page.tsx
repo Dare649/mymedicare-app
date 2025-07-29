@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { IoLogOutOutline } from "react-icons/io5";
 
-import { adminNav, patientNav, professionalNav, partnerNav } from "@/data/dummy";
+import { adminNav, patientNav, professionalNav, partnerNav, bracnchPartnerNav } from "@/data/dummy";
 import { startLoading, stopLoading } from "@/redux/slice/loadingSlice";
 import { getSignedInUser } from "@/redux/slice/auth/auth";
 import { RootState, AppDispatch } from "@/redux/store";
@@ -60,15 +60,17 @@ const Sidebar = () => {
         ? adminNav
         : user.role === "doctor" 
         ? professionalNav
-        : user.role === "partner" 
+        : user.role === "hq_partner" 
         ? partnerNav
-        : patientNav;
+        : user.role === "patient" 
+        ? patientNav
+        : bracnchPartnerNav;
 
     return navItems.map((item, id) => (
       <Link
         key={id}
         href={item.path}
-        className="p-3 flex items-center gap-x-3 hover:bg-primary-1 rounded-lg cursor-pointer font-semibold text-[#1E293B] capitalize focus:text-primary-5 focus:bg-primary-1"
+        className={`p-3 flex items-center gap-x-3 hover:bg-primary-1 rounded-lg cursor-pointer font-semibold text-[#1E293B] capitalize focus:text-primary-5 focus:bg-primary-1 ${item.gap == true ? "mt-28": ""}`}
       >
         <span className="text-[#94A3BB] focus:text-primary-5">{item.icon}</span>
         <span>{item.title}</span>

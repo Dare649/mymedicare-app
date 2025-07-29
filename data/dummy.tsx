@@ -33,28 +33,33 @@ export const patientNav = [
     {
         title: 'dashboard',
         icon: <LuLayoutDashboard size={25}/>,
-        path: "/patient/dashboard"
+        path: "/patient/dashboard",
+        gap: false
     },
 
     {
         title: "schedules",
         icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/patient/schedules"
+        path: "/patient/schedules",
+        gap: false
     },
     {
         title: "records",
         icon: <PiProjectorScreenChartThin size={25}/>,
-        path: "/patient/records"
+        path: "/patient/records",
+        gap: false
     },
     {
         title: "medications",
         icon: <GiMedicines size={25}/>,
-        path: "/patient/medications"
+        path: "/patient/medications",
+        gap: false
     },
     {
         title: "transactions",
         icon: <CiWallet size={25}/>,
-        path: "/patient/transactions"
+        path: "/patient/transactions",
+        gap: false
     },
     {
         title: "settings",
@@ -70,22 +75,26 @@ export const professionalNav = [
     {
         title: "dashboard",
         icon: <LuLayoutDashboard size={25}/>,
-        path: "/professional/dashboard"
+        path: "/professional/dashboard",
+        gap: false
     },
     {
         title: "schedule",
         icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/professional/schedule"
+        path: "/professional/schedule",
+        gap: false
     },
     {
         title: "people",
         icon: <CgProfile size={25}/>,
         path: "/professional/people",
+        gap: false
     },
     {
         title: "chat",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/professional/chat",
+        gap: false
     },
 ]
 
@@ -94,23 +103,68 @@ export const partnerNav = [
     {
         title: "dashboard",
         icon: <LuLayoutDashboard size={25}/>,
-        path: "/partner/dashboard"
+        path: "/partner/dashboard",
+        gap: false
     },
     {
         title: "patients",
         icon: <CgProfile size={25}/>,
         path: "/partner/patients",
+        gap: false
     },
     {
         title: "remote monitoring",
         icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/partner/remote-monitoring"
+        path: "/partner/remote-monitoring",
+        gap: false
     },
     {
         title: "billing",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/partner/billing",
+        gap: false
     },
+    {
+        title: "settings",
+        icon: <CiSettings size={25}/>,
+        path: "/partner/settings",
+        gap: true
+    },
+    
+]
+
+export const bracnchPartnerNav = [
+    {
+        title: "dashboard",
+        icon: <LuLayoutDashboard size={25}/>,
+        path: "/branch/dashboard",
+        gap: false
+    },
+    {
+        title: "patients",
+        icon: <CgProfile size={25}/>,
+        path: "/branch/patients",
+        gap: false
+    },
+    {
+        title: "remote monitoring",
+        icon: <MdOutlineCalendarMonth size={25}/>,
+        path: "/branch/remote-monitoring",
+        gap: false
+    },
+    {
+        title: "billing",
+        icon: <IoChatbubbleEllipsesOutline size={25}/>,
+        path: "/branch/billing",
+        gap: false
+    },
+    {
+        title: "settings",
+        icon: <CiSettings size={25}/>,
+        path: "/branch/settings",
+        gap: true
+    },
+    
 ]
 
 
@@ -118,37 +172,44 @@ export const adminNav = [
     {
         title: "dashboard",
         icon: <LuLayoutDashboard size={25}/>,
-        path: "/admin/dashboard"
+        path: "/admin/dashboard",
+        gap: false
     },
     {
         title: "consultations",
         icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/admin/consultations"
+        path: "/admin/consultations",
+        gap: false
     },
     {
         title: "prescriptions",
         icon: <CgProfile size={25}/>,
         path: "/admin/prescriptions",
+        gap: false
     },
     {
         title: "investigations",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/admin/investigations",
+        gap: false
     },
     {
         title: "users",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/admin/users",
+        gap: false
     },
     {
         title: "partners",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/admin/partners",
+        gap: false
     },
     {
         title: "subscriptions",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/admin/subscriptions",
+        gap: false
     },
 ]
 

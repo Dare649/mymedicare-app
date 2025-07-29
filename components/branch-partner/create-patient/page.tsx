@@ -7,7 +7,7 @@ import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { toast } from 'react-toastify';
-import { createHqPatient } from '@/redux/slice/hq-partner/hq-patient/hq-patient';
+import { createBranchPatient } from '@/redux/slice/branch-partner/branch-patient/branch-patient';
 import { startLoading, stopLoading } from '@/redux/slice/loadingSlice';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -134,7 +134,7 @@ const CreatePatient: React.FC<CreatePatientProps> = ({ close }) => {
 
       try {
         dispatch(startLoading());
-        await dispatch(createHqPatient(payload)).unwrap();
+        await dispatch(createBranchPatient(payload)).unwrap();
         toast.success('Patient created successfully!');
         close();
       } catch (error) {
