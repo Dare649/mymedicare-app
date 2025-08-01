@@ -143,12 +143,12 @@ const Signup = () => {
           </div>
           <h2 className="text-xl sm:text-lg text-primary-5 text-left font-medium">Welcome, <br /> Sign up to get started.</h2>
         </div>
-        <Card className='w-full p-5 mt-5'>
+        <Card className='w-full p-3 mt-5'>
           <Tab
-        titles={tabLabels}
-        renderContent={renderForm}
-        onTabChange={(_, label) => setSelectedRole(getRoleKey(label))}
-      />
+            titles={tabLabels}
+            renderContent={renderForm}
+            onTabChange={(_, label) => setSelectedRole(getRoleKey(label))}
+          />
           <button
             className='w-full bg-primary-5 text-white py-5 rounded-md hover:bg-primary-4 transition duration-200 capitalize font-semibols'
             type='button'
@@ -158,6 +158,7 @@ const Signup = () => {
             sign up
           </button>
         </Card>
+        <p className='first-letter:capitalize text-secondary-5 mt-5 text-center'>don't have an account? <span className='text-primary-5 capitalize font-bold cursor-pointer' onClick={() => router.push('/auth/sign-in')}>sign in</span></p>
       </div>
 
       {/* Image Section */}
