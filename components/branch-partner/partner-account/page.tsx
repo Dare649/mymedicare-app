@@ -69,33 +69,33 @@ const PartnersAccount = () => {
             {fields.map((field) => {
             const value = getNestedValue(partnerData, field.path);
             return (
-                <div key={field.path} className="mb-4">
-                    <h2 className="block text-sm font-medium mb-1 capitalize text-primary-5">
-                        {field.label}
-                    </h2>
-                    <h2
-                        className={`text-tertiary-1 text-lg font-bold ${
-                        ['website', 'cp_email', 'email'].includes(field.path)
-                            ? 'lowercase'
-                            : 'capitalize'
-                        } ${field.path === 'status' && value === 'verified'
-                            ? 'text-green-600'
-                            : ''
-                        }`}
-                    >
-                        {value || 'N/A'}
+              <div key={field.path} className="mb-4">
+                <h2 className="block text-sm font-medium mb-1 capitalize text-primary-5">
+                    {field.label}
+                </h2>
+                <h2
+                  className={`text-tertiary-1 text-lg font-bold ${
+                  ['website', 'cp_email', 'email'].includes(field.path)
+                      ? 'lowercase'
+                      : 'capitalize'
+                  } ${field.path === 'status' && value === 'verified'
+                      ? 'text-green-600'
+                      : ''
+                  }`}
+                >
+                  {value || 'N/A'}
 
-                        {field.isCopyable && value && (
-                            <button
-                            onClick={() => handleCopy(value)}
-                            className="ml-2 inline-flex items-center"
-                            title="Copy to clipboard"
-                            >
-                            <IoCopyOutline size={18} className="text-gray-500 hover:text-primary-500" />
-                            </button>
-                        )}
-                    </h2>
-                </div>
+                  {field.isCopyable && value && (
+                    <button
+                    onClick={() => handleCopy(value)}
+                    className="ml-2 inline-flex items-center"
+                    title="Copy to clipboard"
+                    >
+                      <IoCopyOutline size={18} className="text-gray-500 hover:text-primary-500" />
+                    </button>
+                  )}
+                </h2>
+              </div>
             );
             })}
         </div>

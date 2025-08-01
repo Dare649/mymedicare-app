@@ -16,7 +16,14 @@ interface BranchPartner {
     cp_position: string;
 }
 
-// get hq partner
+interface BranchPartnerSignnUp {
+    email: string;
+    password: string;
+    name: string;
+    referral_code: string;
+}
+
+// get branch partner
 export const getBranchPartner = createAsyncThunk(
     "branch-partner-account/getBranchPartner",
     async (_, { rejectWithValue}) => {
@@ -32,12 +39,28 @@ export const getBranchPartner = createAsyncThunk(
 );
 
 
-// update hq partner
+// update branch partner
 export const updateBranchPartner = createAsyncThunk(
     "branch-partner-account/updateBranchPartner",
     async(data: BranchPartner, { rejectWithValue}) => {
         try {
             const res = await axiosInstance.post("/api/partner/update_account", data);
+            return res.data;
+        } catch (error: any) {
+            return rejectWithValue({
+                message: error.res?.data?.message
+            })
+        }
+    }
+);
+
+
+// update branch partner
+export const createBranchPartner = createAsyncThunk(
+    "branch-partner-account/createBranchPartner",
+    async(data: BranchPartnerSignnUp, { rejectWithValue}) => {
+        try {
+            const res = await axiosInstance.post("/api/create_branch", data);
             return res.data;
         } catch (error: any) {
             return rejectWithValue({

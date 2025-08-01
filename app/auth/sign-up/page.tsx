@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { startLoading, stopLoading } from '@/redux/slice/loadingSlice';
 import { RootState, AppDispatch } from '@/redux/store';
 import { signUp } from '@/redux/slice/auth/auth';
+import { createBranchPartner } from '@/redux/slice/branch-partner/branch-account/branch-partner-account';
 import Tab from '@/components/tabs/page';
 import PatientSignup from '@/components/patient/sign-up/page';
 import ProfessionalSignup from '@/components/professional/sign-up/page';
@@ -76,21 +77,37 @@ const Signup = () => {
 
   // Handle form submission
   const handleSubmit = async (data: any) => {
-    dispatch(startLoading());
-    try {
-      const payload = {
-        ...formData,
-        role: selectedRole, // Include role here
+  dispatch(startLoading());
+  try {
+    const payload = {
+      ...formData,
+      role: selectedRole,
+    };
+
+    let response;
+
+    if (selectedRole === 'branch_partner') {
+      const branchPayload = {
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
+        referral_code: formData.referral_code,
       };
-      const response = await dispatch(signUp(payload)).unwrap();
-      toast.success(response.message);
-      router.push(`/auth/verify-otp?email=${formData.email}`);
-    } catch (error: any) {
-      toast.error(error.message);
-    } finally {
-      dispatch(stopLoading());
+      response = await dispatch(createBranchPartner(branchPayload)).unwrap();
+    } else {
+      response = await dispatch(signUp(payload)).unwrap();
     }
-  };
+
+    toast.success(response.message);
+    router.push(`/auth/verify-otp?email=${formData.email}`);
+  } catch (error: any) {
+    toast.error(error.message || 'Signup failed');
+  } finally {
+    dispatch(stopLoading());
+  }
+};
+
+
 
 
   const renderForm = (label: string) => {

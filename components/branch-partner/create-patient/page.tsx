@@ -183,9 +183,43 @@ const CreatePatient: React.FC<CreatePatientProps> = ({ close }) => {
           <span className={mode === 'bulk' ? 'text-blue-600 font-medium' : ''}>Bulk</span>
         </label>
       </div>
-      {/* Single Mode Form */}
-      {mode === 'single' && (
-        <div className="space-y-4">
+  
+      <div className={`space-y-2 mt-10 ${mode !== 'bulk' ? 'opacity-50 pointer-events-none' : ''}`}>
+          <div>
+            <h2 className='text-[#1E293B] font-[500] text-[20px]'>Bulk upload</h2>
+            <div
+                className={`w-full h-[128px] border-[1px] rounded-sm border-dashed ${
+                    dragActive ? 'bg-blue-100' : 'bg-[#EBF3FF]'
+                } flex items-center justify-center relative`}
+                onDragEnter={handleDrag}
+                onDragOver={handleDrag}
+                onDragLeave={handleDrag}
+                onDrop={handleDrop}
+            >
+                <h3 className="text-center text-sm">
+                    Drop your files here or{' '}
+                    <span
+                    className="underline text-blue-700 cursor-pointer"
+                    onClick={() => inputRef.current?.click()}
+                    >
+                    choose file
+                    </span>
+                </h3>
+
+                {/* Hidden file input */}
+                <input
+                    ref={inputRef}
+                    type="file"
+                    className="hidden"
+                    multiple
+                    onChange={handleFileChange}
+                />
+            </div>
+            <p className='text-[12px] font-[400] leading-relaxed tracking-wide'>Upload a CSV or Excel file with the following columns: First Name, Last Name, Phone Number, Email Address, Country Code</p>
+          </div>
+      </div>
+
+      <div className={`mt-5 ${mode !== 'single' ? 'opacity-50 pointer-events-none' : ''}`}>
           <div className='mt-5'>
             <h2 className='text-[#1E293B] font-[500] text-[20px]'>Single upload</h2>
             <div className='my-3'>
@@ -193,28 +227,28 @@ const CreatePatient: React.FC<CreatePatientProps> = ({ close }) => {
                     className=''
                 >
                     <div className='w-full flex items-center gap-x-3 mb-3'>
-                        <div className=''>
-                          <h2 className='text-[#1E293B] text-[16px] capitalize font-[500]'>first name</h2>
-                          <input 
+                      <div className=''>
+                        <h2 className='text-[#1E293B] text-[16px] capitalize font-[500]'>first name</h2>
+                        <input 
+                          type="text" 
+                          name='firstName'
+                          value={firstName}
+                          onChange={handleChange}
+                          placeholder='e.g John'
+                          className='w-full p-2 rounded outline-none border-[1px] border-[#94A3BB]'
+                        />
+                      </div>
+                      <div className=''>
+                        <h2 className='text-[#1E293B] text-[16px] capitalize font-[500]'>last name</h2>
+                        <input 
                             type="text" 
-                            name='firstName'
-                            value={firstName}
+                            name='lastName'
+                            value={lastName}
                             onChange={handleChange}
-                            placeholder='e.g John'
+                            placeholder='e.g Doe'
                             className='w-full p-2 rounded outline-none border-[1px] border-[#94A3BB]'
-                          />
-                        </div>
-                        <div className=''>
-                          <h2 className='text-[#1E293B] text-[16px] capitalize font-[500]'>last name</h2>
-                          <input 
-                              type="text" 
-                              name='lastName'
-                              value={lastName}
-                              onChange={handleChange}
-                              placeholder='e.g Doe'
-                              className='w-full p-2 rounded outline-none border-[1px] border-[#94A3BB]'
-                          />
-                        </div>
+                        />
+                      </div>
                     </div>
                     <div className='mb-3'>
                         <h2 className='text-[#1E293B] text-[16px] capitalize font-[500]'>email address</h2>
@@ -253,45 +287,6 @@ const CreatePatient: React.FC<CreatePatientProps> = ({ close }) => {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Bulk Upload */}
-      {mode === 'bulk' && (
-        <div className="space-y-2">
-          <div>
-            <h2 className='text-[#1E293B] font-[500] text-[20px]'>Bulk upload</h2>
-            <div
-                className={`w-full h-[128px] border-[1px] rounded-sm border-dashed ${
-                    dragActive ? 'bg-blue-100' : 'bg-[#EBF3FF]'
-                } flex items-center justify-center relative`}
-                onDragEnter={handleDrag}
-                onDragOver={handleDrag}
-                onDragLeave={handleDrag}
-                onDrop={handleDrop}
-            >
-                <h3 className="text-center text-sm">
-                    Drop your files here or{' '}
-                    <span
-                    className="underline text-blue-700 cursor-pointer"
-                    onClick={() => inputRef.current?.click()}
-                    >
-                    choose file
-                    </span>
-                </h3>
-
-                {/* Hidden file input */}
-                <input
-                    ref={inputRef}
-                    type="file"
-                    className="hidden"
-                    multiple
-                    onChange={handleFileChange}
-                />
-            </div>
-            <p className='text-[12px] font-[400] leading-relaxed tracking-wide'>Upload a CSV or Excel file with the following columns: First Name, Last Name, Phone Number, Email Address, Country Code</p>
-          </div>
-        </div>
-      )}
 
       {/* Submit Button */}
       {mode && (

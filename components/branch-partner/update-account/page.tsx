@@ -42,18 +42,18 @@ const fields = [
 
 
 interface FormState {
-    name: string;
-    website: string;
-    state: string;
-    city: string;
-    country: string;
-    street_address: string;
-    cp_first_name: string;
-    cp_last_name: string;
-    cp_email: string;
-    cp_phone : string;
-    cp_country_code: string;
-    cp_position: string;
+  name: string;
+  website: string;
+  state: string;
+  city: string;
+  country: string;
+  street_address: string;
+  cp_first_name: string;
+  cp_last_name: string;
+  cp_email: string;
+  cp_phone : string;
+  cp_country_code: string;
+  cp_position: string;
 }
 
 
@@ -202,13 +202,13 @@ const UpdatePartnerAccount = () => {
                 );
             })}
             <div>
-                <h2 className="block text-sm font-medium mb-1 capitalize text-primary-5">
-                    country
-                </h2>
-                 <CountryDropdown
-                    value={formData.country}
-                    onChange={(val) => setFormData({ ...formData, country: val, state: '', city: '' })}
-                    className="w-full p-2 border rounded"
+              <h2 className="block text-sm font-medium mb-1 capitalize text-primary-5">
+                  country
+              </h2>
+                <CountryDropdown
+                  value={formData.country}
+                  onChange={(val) => setFormData({ ...formData, country: val, state: '' })}
+                  className="w-full p-2 border rounded"
                 />
             </div>
             <div>

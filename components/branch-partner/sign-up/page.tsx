@@ -14,9 +14,6 @@ interface BranchPartnerSignupProps {
     password: string;
     name: string;
     referral_code: string;
-    phone: string;
-    country_code: string;
-    role: string;
   };
   onChange: (field: string, value: string) => void;
 }
@@ -139,73 +136,6 @@ const BranchPartnerSignup: React.FC<BranchPartnerSignupProps> = ({ formData, onC
         </div>
         {touched.email && errors.email && (
           <span className="text-red-500 text-xs mt-1">{errors.email}</span>
-        )}
-      </div>
-
-      {/* Phone with country code */}
-      <div className="flex flex-col w-full mb-4">
-        <div className="flex items-center border-b-2 border-tertiary-1 focus-within:border-primary-5 p-2">
-          <FiPhoneCall size={20} className="text-gray-400" />
-          <style>
-            {`
-              .search-box {
-                color: #6B7280 !important; /* Tailwind's text-tertiary-1 */
-                background: transparent !important;
-              }
-              .country-list .country-name {
-                color: #6B7280 !important;
-                font-weight: 500;
-                margin-left: 8px;
-              }
-            `}
-          </style>
-          <PhoneInput
-            country={'ng'}
-            value={formData.country_code.replace('+', '') + formData.phone}
-            inputStyle={{
-              border: 'none',
-              boxShadow: 'none',
-              width: '100%',
-              background: 'transparent',
-              color: '#6B7280',
-            }}
-            buttonStyle={{
-              border: 'none',
-              background: 'transparent',
-              paddingLeft: '0.5rem',
-              paddingRight: '0.5rem',
-              minWidth: '70px',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-            containerStyle={{
-              border: 'none',
-              width: '100%',
-            }}
-            dropdownStyle={{
-              width: 'auto',
-              minWidth: '200px',
-              left: 0,
-              borderRadius: '0.5rem',
-              zIndex: 50,
-            }}
-            inputClass="!w-full !bg-transparent !outline-none !text-tertiary-1"
-            buttonClass="!bg-transparent !flex !items-center"
-            dropdownClass="!left-0 !rounded-lg !z-50"
-            enableSearch
-            onChange={(value, countryData) => {
-              const dialCode = (countryData as any).dialCode || '';
-              const phoneWithoutCode = value.startsWith(dialCode)
-                ? value.slice(dialCode.length)
-                : value.replace(`+${dialCode}`, '');
-              handleChange('country_code', `+${dialCode}`);
-              handleChange('phone', phoneWithoutCode);
-            }}
-            onBlur={() => handleBlur('phone')}
-          />
-        </div>
-        {touched.phone && errors.phone && (
-          <span className="text-red-500 text-xs mt-1">{errors.phone}</span>
         )}
       </div>
 

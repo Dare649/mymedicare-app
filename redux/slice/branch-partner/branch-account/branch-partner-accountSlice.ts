@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
     getBranchPartner,
-    updateBranchPartner
+    updateBranchPartner,
+    createBranchPartner
 } from "./branch-partner-account";
 
 interface BranchPartnerData {
@@ -29,28 +30,30 @@ interface BranchPartnerData {
 }
 
 
-interface HqPartnerState {
+interface branchPartnerState {
     getBranchPartnerStatus: "idle" | "isLoading" | "succeeded" | "failed";
     updateBranchPartnerStatus: "idle" | "isLoading" | "succeeded" | "failed";
+    createBranchPartnerStatus: "idle" | "isLoading" | "succeeded" | "failed";
     status: "idle" | "isLoading" | "succeeded" | "failed";
-    hqPartner: BranchPartnerData | null;
-    allHqPartner: BranchPartnerData[];
+    branchPartner: BranchPartnerData | null;
+    allBranchPartner: BranchPartnerData[];
     error: string | null;
 }
 
 
-const initialState: HqPartnerState = {
+const initialState: branchPartnerState = {
     getBranchPartnerStatus: "idle",
     updateBranchPartnerStatus: "idle",
+    createBranchPartnerStatus: "idle",
     status: "idle",
-    hqPartner: null,
-    allHqPartner: [],
+    branchPartner: null,
+    allBranchPartner: [],
     error: null,
 }
 
 
-const hqPartnerSlice = createSlice({
-    name: "hqPartner",
+const branchPartnerSlice = createSlice({
+    name: "branchPartner",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -61,11 +64,25 @@ const hqPartnerSlice = createSlice({
         })
         .addCase(updateBranchPartner.fulfilled, (state, action) => {
             state.updateBranchPartnerStatus = "succeeded";
-            state.hqPartner = action.payload;
-            state.allHqPartner.push(action.payload); 
+            state.branchPartner = action.payload;
+            state.allBranchPartner.push(action.payload); 
         })
         .addCase(updateBranchPartner.rejected, (state, action) => {
             state.updateBranchPartnerStatus = "failed";
+            state.error = action.error.message || "Failed to update hq partner";
+        })
+
+        // create hq partner
+        .addCase(createBranchPartner.pending, (state) => {
+            state.createBranchPartnerStatus = "isLoading";
+        })
+        .addCase(createBranchPartner.fulfilled, (state, action) => {
+            state.createBranchPartnerStatus = "succeeded";
+            state.branchPartner = action.payload;
+            state.allBranchPartner.push(action.payload); 
+        })
+        .addCase(createBranchPartner.rejected, (state, action) => {
+            state.createBranchPartnerStatus = "failed";
             state.error = action.error.message || "Failed to update hq partner";
         })
 
@@ -76,7 +93,7 @@ const hqPartnerSlice = createSlice({
         })
         .addCase(getBranchPartner.fulfilled, (state, action) => {
         state.getBranchPartnerStatus = "succeeded";
-        state.hqPartner = action.payload;
+        state.branchPartner = action.payload;
         })
         .addCase(getBranchPartner.rejected, (state, action) => {
         state.getBranchPartnerStatus = "failed";
@@ -85,4 +102,4 @@ const hqPartnerSlice = createSlice({
     },
 })
 
-export default hqPartnerSlice.reducer;
+export default branchPartnerSlice.reducer;
