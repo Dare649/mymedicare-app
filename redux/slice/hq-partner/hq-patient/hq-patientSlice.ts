@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
     createHqPatient,
     getHqPatient,
-    getAllHqPatient
+    getAllHqPatient,
+    createHqPatientBulk
 } from "./hq-patient";
 
 interface PatientData {
@@ -25,6 +26,7 @@ interface PatientData {
 
 interface PatientState {
   createHqPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
+  createHqPatientBulkStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getAllHqPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getHqPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   status: "idle" | "isLoading" | "succeeded" | "failed";
@@ -35,6 +37,7 @@ interface PatientState {
 
 const initialState: PatientState = {
   createHqPatientStatus: "idle",
+  createHqPatientBulkStatus: "idle",
   getAllHqPatientStatus: "idle",
   getHqPatientStatus: "idle",
   status: "idle",
@@ -61,6 +64,21 @@ const hqPartientSlice = createSlice({
       })
       .addCase(createHqPatient.rejected, (state, action) => {
         state.createHqPatientStatus = "failed";
+        state.error = action.error.message || "Failed to create partner";
+      })
+
+
+      // Create Partner bulk 
+      .addCase(createHqPatientBulk.pending, (state) => {
+        state.createHqPatientBulkStatus = "isLoading";
+      })
+      .addCase(createHqPatientBulk.fulfilled, (state, action) => {
+        state.createHqPatientBulkStatus = "succeeded";
+        state.partnerPatient = action.payload;
+        state.allPartnerPatient.push(action.payload); // optionally push to the list
+      })
+      .addCase(createHqPatientBulk.rejected, (state, action) => {
+        state.createHqPatientBulkStatus = "failed";
         state.error = action.error.message || "Failed to create partner";
       })
 

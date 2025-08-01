@@ -9,7 +9,7 @@ interface BranchPatient {
 }
 
 
-// create patient
+// create single patient
 export const createBranchPatient = createAsyncThunk(
     "branch-patient/createBranchPatient",
     async(data: BranchPatient, { rejectWithValue}) => {
@@ -22,6 +22,25 @@ export const createBranchPatient = createAsyncThunk(
             })
         }
     }
+);
+
+
+export const createBranchPatientBulk = createAsyncThunk(
+  "branch-patient/createBranchPatientBulk",
+  async (formData: FormData, { rejectWithValue }) => {
+    try {
+      const res = await axiosInstance.post("/api/partner/upload_list", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return res.data;
+    } catch (error: any) {
+      return rejectWithValue({
+        message: error.response?.data?.message || 'Bulk upload failed',
+      });
+    }
+  }
 );
 
 

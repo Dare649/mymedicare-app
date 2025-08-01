@@ -25,6 +25,25 @@ export const createHqPatient = createAsyncThunk(
 );
 
 
+export const createHqPatientBulk = createAsyncThunk(
+  "hq-patient/createHqPatientBulk",
+  async (formData: FormData, { rejectWithValue }) => {
+    try {
+      const res = await axiosInstance.post("/api/partner/upload_list", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return res.data;
+    } catch (error: any) {
+      return rejectWithValue({
+        message: error.response?.data?.message || 'Bulk upload failed',
+      });
+    }
+  }
+);
+
+
 // get all patient
 export const getAllHqPatient = createAsyncThunk(
     "hq-patient/getAllHqPatient",

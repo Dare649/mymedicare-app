@@ -18,7 +18,7 @@ const PatientSchedule = () => {
   const [selectedRow, setSelectedRow] = useState<any>(null);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const allPartnerPatient = useSelector((state: RootState) => Array.isArray(state.partnerPatient.allPartnerPatient) ? state.partnerPatient.allPartnerPatient : []);
+  const allPartnerPatient = useSelector((state: RootState) => Array.isArray(state.hqPatient.allPartnerPatient) ? state.hqPatient.allPartnerPatient : []);
 
   // fetch partners list
   useEffect(() => {

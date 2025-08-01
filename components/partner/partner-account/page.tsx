@@ -39,7 +39,7 @@ const fields = [
 
 const PartnersAccount = () => {
   const dispatch = useDispatch<any>();
-  const partnerData = useSelector((state: RootState) => state.hqPartner.hqPartner);
+  const hqPartnerData = useSelector((state: RootState) => state.hqPartner.hqPartner);
   const isLoading = useSelector((state: RootState) => state.loading.isLoading);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const PartnersAccount = () => {
     <div className="w-full lg:px-10 lg:py-5 sm:p-5">
         <div className="w-full grid lg:grid-cols-4 sm:grid-cols-2 gap-4">
             {fields.map((field) => {
-            const value = getNestedValue(partnerData, field.path);
+            const value = getNestedValue(hqPartnerData, field.path);
             return (
                 <div key={field.path} className="mb-4">
                     <h2 className="block text-sm font-medium mb-1 capitalize text-primary-5">

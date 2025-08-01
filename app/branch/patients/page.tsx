@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Table from '@/components/table/page';
 import Modal from '@/components/modal/page';
-import CreatePatient from '@/components/partner/create-patient/page';
+import CreatePatient from '@/components/branch-partner/create-patient/page';
 import { getAllBranchPatient } from '@/redux/slice/branch-partner/branch-patient/branch-patient';
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const PatientSchedule = () => {
   const [selectedRow, setSelectedRow] = useState<any>(null);
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
-  const allPartnerPatient = useSelector((state: RootState) => Array.isArray(state.partnerPatient.allPartnerPatient) ? state.partnerPatient.allPartnerPatient : []);
+  const allBranchPatient = useSelector((state: RootState) => Array.isArray(state.branchPartnerPatient.allBranchPatient) ? state.branchPartnerPatient.allBranchPatient : []);
 
   // fetch partners list
   useEffect(() => {
@@ -89,7 +89,7 @@ const PatientSchedule = () => {
       </div>
       <Table 
         columns={columns}
-        data={allPartnerPatient}
+        data={allBranchPatient}
       />
 
       {

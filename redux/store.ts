@@ -4,9 +4,10 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from '@/redux/slice/auth/authSlice';
 import adminPartnerReducer from '@/redux/slice/admin/partner/partnerSlice';
-import partnerPatientReducer from '@/redux/slice/branch-partner/branch-patient/branch-patientSlice';
+import branchPartnerPatientReducer from '@/redux/slice/branch-partner/branch-patient/branch-patientSlice';
 import branchPartnerReducer from '@/redux/slice/branch-partner/branch-account/branch-partner-accountSlice';
 import hqPartnerReducer from '@/redux/slice/hq-partner/hq-account/hq-partner-accountSlice';
+import hqPatientReducer from '@/redux/slice/hq-partner/hq-patient/hq-patientSlice';
 
 
 
@@ -19,9 +20,10 @@ const persistConfig = {
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 const persistedAdminPartnerReducer = persistReducer(persistConfig, adminPartnerReducer);
-const persistedPartnerPatientReducer = persistReducer(persistConfig, partnerPatientReducer);
+const persistedBranchPartnerPatientReducer = persistReducer(persistConfig, branchPartnerPatientReducer);
 const persistedBranchPartnerReducer = persistReducer(persistConfig, branchPartnerReducer);
 const persistedHqPartnerReducer = persistReducer(persistConfig, hqPartnerReducer);
+const persistedHqPatientReducer = persistReducer(persistConfig, hqPatientReducer);
 
 
 
@@ -30,9 +32,10 @@ export const store = configureStore({
         loading: loadingReducer,
         auth: persistedAuthReducer,
         adminPartner: persistedAdminPartnerReducer,
-        partnerPatient: persistedPartnerPatientReducer,
+        branchPartnerPatient: persistedBranchPartnerPatientReducer,
         branchPartner: persistedBranchPartnerReducer,
         hqPartner: persistedHqPartnerReducer,
+        hqPatient: persistedHqPatientReducer,
     },
 
     middleware: (getDefaultMiddleware) =>

@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
     createBranchPatient,
     getBranchPatient,
-    getAllBranchPatient
+    getAllBranchPatient,
+    createBranchPatientBulk
 } from "./branch-patient";
 
-interface PatientData {
+interface BranchPatientData {
   id: number;
   name: string;
   email: string;
@@ -23,28 +24,30 @@ interface PatientData {
   balance: string;
 }
 
-interface PatientState {
+interface BranchPatientState {
   createBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
+  createBranchPatientBulkStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getAllBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   status: "idle" | "isLoading" | "succeeded" | "failed";
-  partnerPatient: PatientData | null;
-  allPartnerPatient: PatientData[];
+  branchPatient: BranchPatientData | null;
+  allBranchPatient: BranchPatientData[];
   error: string | null;
 }
 
-const initialState: PatientState = {
+const initialState: BranchPatientState = {
   createBranchPatientStatus: "idle",
+  createBranchPatientBulkStatus: "idle",
   getAllBranchPatientStatus: "idle",
   getBranchPatientStatus: "idle",
   status: "idle",
-  partnerPatient: null,
-  allPartnerPatient: [],
+  branchPatient: null,
+  allBranchPatient: [],
   error: null,
 };
 
-const partnerPartientSlice = createSlice({
-  name: "partnerPatient",
+const branchPartnerPartientSlice = createSlice({
+  name: "branchPatient",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -56,11 +59,25 @@ const partnerPartientSlice = createSlice({
       })
       .addCase(createBranchPatient.fulfilled, (state, action) => {
         state.createBranchPatientStatus = "succeeded";
-        state.partnerPatient = action.payload;
-        state.allPartnerPatient.push(action.payload); // optionally push to the list
+        state.branchPatient = action.payload;
+        state.allBranchPatient.push(action.payload); // optionally push to the list
       })
       .addCase(createBranchPatient.rejected, (state, action) => {
         state.createBranchPatientStatus = "failed";
+        state.error = action.error.message || "Failed to create partner";
+      })
+
+      // Create Partner bulk 
+      .addCase(createBranchPatientBulk.pending, (state) => {
+        state.createBranchPatientBulkStatus = "isLoading";
+      })
+      .addCase(createBranchPatientBulk.fulfilled, (state, action) => {
+        state.createBranchPatientBulkStatus = "succeeded";
+        state.branchPatient = action.payload;
+        state.allBranchPatient.push(action.payload); // optionally push to the list
+      })
+      .addCase(createBranchPatientBulk.rejected, (state, action) => {
+        state.createBranchPatientBulkStatus = "failed";
         state.error = action.error.message || "Failed to create partner";
       })
 
@@ -70,7 +87,7 @@ const partnerPartientSlice = createSlice({
       })
       .addCase(getBranchPatient.fulfilled, (state, action) => {
         state.getBranchPatientStatus = "succeeded";
-        state.partnerPatient = action.payload;
+        state.branchPatient = action.payload;
       })
       .addCase(getBranchPatient.rejected, (state, action) => {
         state.getBranchPatientStatus = "failed";
@@ -83,7 +100,7 @@ const partnerPartientSlice = createSlice({
       })
       .addCase(getAllBranchPatient.fulfilled, (state, action) => {
         state.getAllBranchPatientStatus = "succeeded";
-        state.allPartnerPatient = Array.isArray(action.payload) ? action.payload : [];
+        state.allBranchPatient = Array.isArray(action.payload) ? action.payload : [];
       })
       .addCase(getAllBranchPatient.rejected, (state, action) => {
         state.getAllBranchPatientStatus = "failed";
@@ -92,4 +109,4 @@ const partnerPartientSlice = createSlice({
   },
 });
 
-export default partnerPartientSlice.reducer;
+export default branchPartnerPartientSlice.reducer;

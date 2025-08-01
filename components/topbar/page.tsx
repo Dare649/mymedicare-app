@@ -93,13 +93,15 @@ const Topbar = () => {
                   priority
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="">
                 <h3 className="capitalize text-tertiary-1 text-[14px]">
                   {user?.name}
                 </h3>
-                <div className="bg-[#0F973D] w-[44px] p-1 rounded-lg flex items-center justify-center">
-                  <h2 className="capitalize text-white text-[10px]">{user?.role}</h2>
-                </div>
+                <button className="bg-[#0F973D]  p-1 rounded-lg">
+                  <h2 className="capitalize text-white text-[10px]">
+                    {user?.role?.replace(/_/g, ' ')}
+                  </h2>
+                </button>
               </div>
             </div>
           </div>
