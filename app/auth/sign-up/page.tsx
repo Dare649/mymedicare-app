@@ -77,35 +77,36 @@ const Signup = () => {
 
   // Handle form submission
   const handleSubmit = async (data: any) => {
-  dispatch(startLoading());
-  try {
-    const payload = {
-      ...formData,
-      role: selectedRole,
-    };
-
-    let response;
-
-    if (selectedRole === 'branch_partner') {
-      const branchPayload = {
-        email: formData.email,
-        password: formData.password,
-        name: formData.name,
-        referral_code: formData.referral_code,
+    dispatch(startLoading());
+    try {
+      const payload = {
+        ...formData,
+        role: selectedRole,
       };
-      response = await dispatch(createBranchPartner(branchPayload)).unwrap();
-    } else {
-      response = await dispatch(signUp(payload)).unwrap();
-    }
 
-    toast.success(response.message);
-    router.push(`/auth/verify-otp?email=${formData.email}`);
-  } catch (error: any) {
-    toast.error(error.message || 'Signup failed');
-  } finally {
-    dispatch(stopLoading());
-  }
-};
+      let response;
+
+      if (selectedRole === 'branch_partner') {
+        const branchPayload = {
+          email: formData.email,
+          password: formData.password,
+          name: formData.name,
+          referral_code: formData.referral_code,
+        };
+        response = await dispatch(createBranchPartner(branchPayload)).unwrap();
+        router.push(`/auth/sign-in`);
+      } else {
+        response = await dispatch(signUp(payload)).unwrap();
+        router.push(`/auth/verify-otp?email=${formData.email}`);
+      }
+
+      toast.success(response.message);
+    } catch (error: any) {
+      toast.error(error.message || 'Signup failed');
+    } finally {
+      dispatch(stopLoading());
+    }
+  };
 
 
 
