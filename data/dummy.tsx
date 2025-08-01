@@ -112,18 +112,18 @@ export const partnerNav = [
         path: "/partner/patients",
         gap: false
     },
-    {
-        title: "remote monitoring",
-        icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/partner/remote-monitoring",
-        gap: false
-    },
-    {
-        title: "billing",
-        icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/partner/billing",
-        gap: false
-    },
+    // {
+    //     title: "remote monitoring",
+    //     icon: <MdOutlineCalendarMonth size={25}/>,
+    //     path: "/partner/remote-monitoring",
+    //     gap: false
+    // },
+    // {
+    //     title: "billing",
+    //     icon: <IoChatbubbleEllipsesOutline size={25}/>,
+    //     path: "/partner/billing",
+    //     gap: false
+    // },
     {
         title: "settings",
         icon: <CiSettings size={25}/>,
@@ -146,18 +146,18 @@ export const bracnchPartnerNav = [
         path: "/branch/patients",
         gap: false
     },
-    {
-        title: "remote monitoring",
-        icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/branch/remote-monitoring",
-        gap: false
-    },
-    {
-        title: "billing",
-        icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/branch/billing",
-        gap: false
-    },
+    // {
+    //     title: "remote monitoring",
+    //     icon: <MdOutlineCalendarMonth size={25}/>,
+    //     path: "/branch/remote-monitoring",
+    //     gap: false
+    // },
+    // {
+    //     title: "billing",
+    //     icon: <IoChatbubbleEllipsesOutline size={25}/>,
+    //     path: "/branch/billing",
+    //     gap: false
+    // },
     {
         title: "settings",
         icon: <CiSettings size={25}/>,
@@ -175,42 +175,42 @@ export const adminNav = [
         path: "/admin/dashboard",
         gap: false
     },
-    {
-        title: "consultations",
-        icon: <MdOutlineCalendarMonth size={25}/>,
-        path: "/admin/consultations",
-        gap: false
-    },
-    {
-        title: "prescriptions",
-        icon: <CgProfile size={25}/>,
-        path: "/admin/prescriptions",
-        gap: false
-    },
-    {
-        title: "investigations",
-        icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/admin/investigations",
-        gap: false
-    },
-    {
-        title: "users",
-        icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/admin/users",
-        gap: false
-    },
+    // {
+    //     title: "consultations",
+    //     icon: <MdOutlineCalendarMonth size={25}/>,
+    //     path: "/admin/consultations",
+    //     gap: false
+    // },
+    // {
+    //     title: "prescriptions",
+    //     icon: <CgProfile size={25}/>,
+    //     path: "/admin/prescriptions",
+    //     gap: false
+    // },
+    // {
+    //     title: "investigations",
+    //     icon: <IoChatbubbleEllipsesOutline size={25}/>,
+    //     path: "/admin/investigations",
+    //     gap: false
+    // },
+    // {
+    //     title: "users",
+    //     icon: <IoChatbubbleEllipsesOutline size={25}/>,
+    //     path: "/admin/users",
+    //     gap: false
+    // },
     {
         title: "partners",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/admin/partners",
         gap: false
     },
-    {
-        title: "subscriptions",
-        icon: <IoChatbubbleEllipsesOutline size={25}/>,
-        path: "/admin/subscriptions",
-        gap: false
-    },
+    // {
+    //     title: "subscriptions",
+    //     icon: <IoChatbubbleEllipsesOutline size={25}/>,
+    //     path: "/admin/subscriptions",
+    //     gap: false
+    // },
 ]
 
 
