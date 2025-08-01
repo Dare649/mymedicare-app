@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoMenuSharp, IoLogOutOutline } from "react-icons/io5";
-import { adminNav, patientNav, professionalNav } from "@/data/dummy";
+import { adminNav, partnerNav, patientNav, professionalNav } from "@/data/dummy";
 import Link from "next/link";
 import Modal from "../modal/page";
 import { IoMdClose } from "react-icons/io";
@@ -110,9 +110,9 @@ const Topbar = () => {
 
       {/* mobile view */}
       <div className="w-full lg:hidden flex">
-        <div className="w-full border-b-2 border-primary-1 px-3 py-4 fixed top-0">
+        <div className="w-full border-b-2 border-primary-5 px-3 py-4 fixed top-0 bg-white">
           <div className="flex items-center justify-between">
-            <div className="w-[30%]">
+            <div className="w-[20%]">
               <Image
                 src={'/logo.png'}
                 alt="stonepay-admin-app"
@@ -124,7 +124,7 @@ const Topbar = () => {
               />
             </div>
             <div onClick={handleToggleMenu}>
-              <IoMenuSharp size={30} className="text-primary-1 font-bold"/>
+              <IoMenuSharp size={30} className="text-primary-5 font-bold"/>
             </div>
           </div>
         </div>
@@ -148,14 +148,16 @@ const Topbar = () => {
               </div>
               <div className="py-5 w-full">
                 {user && (
-                  (user.role === 'admin' ? adminNav :
-                  user.role === 'business' ? professionalNav :
+                  (user.role === 'super_admin' ? adminNav :
+                  user.role === 'doctor' ? professionalNav :
+                  user.role === 'hq_partner' ? partnerNav :
+                  user.role === 'branch_partner' ? partnerNav :
                   patientNav
                   ).map((item, id) => (
                     <Link
                       href={item.path}
                       key={id}
-                      className="p-3 flex items-center gap-x-3 hover:bg-primary-1/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-1 font-semibold text-secondary-1 capitalize"
+                      className="p-3 flex items-center gap-x-3 hover:bg-primary-5/60 rounded-lg cursor-pointer hover:text-white focus:text-primary-5 font-semibold text-primary-5 capitalize"
                       onClick={handleToggleMenu} // Close menu when clicking a link
                     >
                       <h2>{item.icon}</h2>
@@ -176,7 +178,7 @@ const Topbar = () => {
 
               {/* Close icon */}
               <button
-                className="absolute top-5 right-0 text-primary-1 font-bold text-2xl"
+                className="absolute top-5 right-0 text-primary-5 font-bold text-2xl"
                 onClick={handleToggleMenu}
               >
                 <IoMdClose size={25}/>

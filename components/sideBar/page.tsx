@@ -101,7 +101,7 @@ const Sidebar = () => {
       </div>
 
       {/* Sign Out Button */}
-      {/* <div className="px-5 mt-4">
+      <div className="px-5 mt-4">
         <button
           onClick={handleSignout}
           className="bg-red-600 w-full text-white font-bold capitalize rounded-lg p-2 flex items-center justify-center gap-x-2"
@@ -109,7 +109,7 @@ const Sidebar = () => {
           <IoLogOutOutline size={22} />
           {isLoading ? "loading..." : "log out"}
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };
