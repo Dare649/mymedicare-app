@@ -59,8 +59,23 @@ export const getAllBranchPatient = createAsyncThunk(
     }
 );
 
+// get all patient
+export const getAllBranchRiskPatient = createAsyncThunk(
+    "branch-patient/getAllBranchRiskPatient",
+    async (_, { rejectWithValue}) => {
+        try {
+            const res = await axiosInstance.get('/api/partner/get_referred/patient');
+            return res.data.data;
+        } catch (error: any) {
+            return rejectWithValue({
+                message: error.res?.message
+            });
+        }
+    }
+);
 
-// get a partner
+
+// get a patient
 export const getBranchPatient = createAsyncThunk(
     "branch-patient/getBranchPatient",
     async (uuid: string, { rejectWithValue }) => {

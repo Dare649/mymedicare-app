@@ -316,6 +316,33 @@ export const adminDashboardAnalytics = [
     },
 ]
 
+export const partnerDashboardAnalytics = [
+    {
+        title: 'total patients',
+        icon: <img src="/userfour.png" alt="mymedicare" />,
+        figure: '1240 patients',
+        rate: '+80%'
+    },
+    {
+        title: 'user approval',
+        icon: <LuUserRound size={23.33}/>,
+        figure: '20 accounts',
+        rate: '+80%'
+    },
+    {
+        title: 'pending payments',
+        icon: <GoCreditCard size={23.33}/>,
+        figure: '20 payments',
+        rate: '+150%'
+    },
+    // {
+    //     title: 'unfulfiled deliveries',
+    //     icon: <TbTruckDelivery size={23.33}/>,
+    //     figure: '20 orders',
+    //     rate: '+20%'
+    // },
+]
+
 
 export const adminDashboardSummary = [
     {
@@ -347,6 +374,56 @@ export const adminDashboardSummary = [
         icon: <img src="/cross.png" alt="mymedicare" />,
         figure: 20,
         rate: '+20%'
+    },
+]
+
+
+export const riskyPatients = [
+    {
+        name: 'aminat danjuma',
+        tracking: [
+           {track: "blood sugar"},
+            {track: "blood pressure"},
+            {track: "food"},
+           {track: "weight"}
+        ],
+        img: <img src="/r1.png" alt="" />
+    },
+    {
+        name: 'chisom okonkwo',
+        tracking: [
+           {track: "blood sugar"},
+            {track: "blood pressure"},
+            {track: "food"},
+        ],
+        img: <img src="/r2.png" alt="" />
+    },
+    {
+        name: 'uchechi amm',
+        tracking: [
+           {track: "blood sugar"},
+            {track: "blood pressure"},
+        ],
+        img: <img src="/r3.png" alt="" />
+    },
+    {
+        name: 'praise oluomachi',
+        tracking: [
+           {track: "blood sugar"},
+            {track: "blood pressure"},
+            {track: "food"},
+           {track: "weight"}
+        ],
+        img: <img src="/r1.png" alt="" />
+    },
+    {
+        name: 'praise isibo',
+        tracking: [
+           {track: "blood sugar"},
+            {track: "food"},
+           {track: "weight"}
+        ],
+        img: <img src="/r2.png" alt="" />
     },
 ]
 

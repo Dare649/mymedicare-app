@@ -109,8 +109,6 @@ const Signup = () => {
   };
 
 
-
-
   const renderForm = (label: string) => {
     const role = getRoleKey(label);
 
