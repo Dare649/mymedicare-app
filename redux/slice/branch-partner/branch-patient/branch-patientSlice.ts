@@ -3,8 +3,18 @@ import {
     createBranchPatient,
     getBranchPatient,
     getAllBranchPatient,
-    createBranchPatientBulk
+    createBranchPatientBulk,
+    getAllBranchRiskPatient
 } from "./branch-patient";
+
+
+interface RmTracking {
+  blood_pressure: "yes" | "no";
+  blood_sugar: "yes" | "no";
+  weight: "yes" | "no";
+  food_log: "yes" | "no";
+}
+
 
 interface BranchPatientData {
   id: number;
@@ -22,12 +32,15 @@ interface BranchPatientData {
   status: string;
   role: string;
   balance: string;
+  mobile_app_patient?: string;
+  rm_tracking?: RmTracking;
 }
 
 interface BranchPatientState {
   createBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   createBranchPatientBulkStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getAllBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
+  getAllBranchRiskPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   status: "idle" | "isLoading" | "succeeded" | "failed";
   branchPatient: BranchPatientData | null;
@@ -39,6 +52,7 @@ const initialState: BranchPatientState = {
   createBranchPatientStatus: "idle",
   createBranchPatientBulkStatus: "idle",
   getAllBranchPatientStatus: "idle",
+  getAllBranchRiskPatientStatus: "idle",
   getBranchPatientStatus: "idle",
   status: "idle",
   branchPatient: null,
@@ -104,6 +118,24 @@ const branchPartnerPartientSlice = createSlice({
       })
       .addCase(getAllBranchPatient.rejected, (state, action) => {
         state.getAllBranchPatientStatus = "failed";
+        state.error = action.error.message ?? "Failed to retrieve partners list."
+      })
+      
+      // get all partner at risk
+      .addCase(getAllBranchRiskPatient.pending, (state) => {
+        state.getAllBranchRiskPatientStatus = "isLoading";
+      })
+      .addCase(getAllBranchRiskPatient.fulfilled, (state, action) => {
+        state.getAllBranchRiskPatientStatus = "succeeded";
+
+        // ✅ Ensure we extract patients_at_risk array from payload.data
+        const patients =
+          action.payload?.data?.patients_at_risk || action.payload || [];
+
+        state.allBranchPatient = Array.isArray(patients) ? patients : [];
+      })
+      .addCase(getAllBranchRiskPatient.rejected, (state, action) => {
+        state.getAllBranchRiskPatientStatus = "failed";
         state.error = action.error.message ?? "Failed to retrieve partners list."
       })
   },

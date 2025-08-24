@@ -6,16 +6,16 @@ interface TrackingItem {
   track: string;
 }
 
-interface DataItem {
+interface BranchPatientData {
   name: string;
-  tracking: TrackingItem[];
+  rm_tracking: TrackingItem[];
   img: React.ReactNode; // ✅ allow JSX (your <img />)
 }
 
 interface DashboardTableProps {
   header: string;
   text: string;
-  data: DataItem[];
+  data: BranchPatientData[];
   link: string;
 }
 
@@ -62,8 +62,8 @@ const DashboardTable: React.FC<DashboardTableProps> = ({
                   <h2 className="text-tertiary-1 font-medium capitalize">
                     {row.name}
                   </h2>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    {row.tracking.map((t, i) => {
+                  <div className="flex flex-wrap gap-2 mt-1 capitalize">
+                    tracking {row.rm_tracking.map((t, i) => {
                         const colors = [
                         "text-green-600 bg-green-100",
                         "text-orange-600 bg-orange-100",

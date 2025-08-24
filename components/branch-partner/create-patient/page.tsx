@@ -208,8 +208,8 @@ const CreatePatient: React.FC<CreatePatientProps> = ({ close }) => {
         </label>
       </div>
   
-      <div className={`space-y-2 mt-10 ${mode !== 'bulk' ? 'opacity-50 bg-gray-100 pointer-events-none' : ''}`}>
-          <div>
+      <div className={`space-y-2 mt-10 ${mode !== 'bulk' ? 'opacity-50 bg-gray-100 pointer-events-none p-3' : ''}`}>
+          <div className='p-3'>
             <h2 className='text-[#1E293B] font-[500] text-[20px]'>Bulk upload</h2>
             <div
                 className={`w-full h-[128px] border-[1px] rounded-sm border-dashed ${
@@ -254,12 +254,12 @@ const CreatePatient: React.FC<CreatePatientProps> = ({ close }) => {
           </div>
       </div>
 
-      <div className={`mt-5 ${mode !== 'single' ? 'opacity-50 bg-gray-100 pointer-events-none' : ''}`}>
+      <div className={`mt-5 ${mode !== 'single' ? 'opacity-50 bg-gray-100 pointer-events-none p-3' : ''}`}>
           <div className='mt-5'>
             <h2 className='text-[#1E293B] font-[500] text-[20px]'>Single upload</h2>
             <div className='my-3'>
                 <form 
-                    className=''
+                  className=''
                 >
                     <div className='w-full flex items-center gap-x-3 mb-3'>
                       <div className=''>
