@@ -4,7 +4,8 @@ import {
     getBranchPatient,
     getAllBranchPatient,
     createBranchPatientBulk,
-    getAllBranchRiskPatient
+    getAllBranchRiskPatient,
+    getAllBranchInactivePatient
 } from "./branch-patient";
 
 
@@ -41,10 +42,12 @@ interface BranchPatientState {
   createBranchPatientBulkStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getAllBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getAllBranchRiskPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
+  getAllBranchInactivePatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   getBranchPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
   status: "idle" | "isLoading" | "succeeded" | "failed";
   branchPatient: BranchPatientData | null;
   allBranchPatient: BranchPatientData[];
+  allBranchInactivePatient: BranchPatientData[];
   error: string | null;
 }
 
@@ -53,10 +56,12 @@ const initialState: BranchPatientState = {
   createBranchPatientBulkStatus: "idle",
   getAllBranchPatientStatus: "idle",
   getAllBranchRiskPatientStatus: "idle",
+  getAllBranchInactivePatientStatus: "idle",
   getBranchPatientStatus: "idle",
   status: "idle",
   branchPatient: null,
   allBranchPatient: [],
+  allBranchInactivePatient: [],
   error: null,
 };
 
@@ -121,7 +126,7 @@ const branchPartnerPartientSlice = createSlice({
         state.error = action.error.message ?? "Failed to retrieve partners list."
       })
       
-      // get all partner at risk
+      // get all branch partner patient at risk
       .addCase(getAllBranchRiskPatient.pending, (state) => {
         state.getAllBranchRiskPatientStatus = "isLoading";
       })
@@ -136,7 +141,23 @@ const branchPartnerPartientSlice = createSlice({
       })
       .addCase(getAllBranchRiskPatient.rejected, (state, action) => {
         state.getAllBranchRiskPatientStatus = "failed";
-        state.error = action.error.message ?? "Failed to retrieve partners list."
+        state.error = action.error.message ?? "Failed to retrieve list of patient at risk."
+      })
+
+      // get all  branch partner inactive patient
+      .addCase(getAllBranchInactivePatient.pending, (state) => {
+        state.getAllBranchInactivePatientStatus = "isLoading";
+      })
+      .addCase(getAllBranchInactivePatient.fulfilled, (state, action) => {
+        state.getAllBranchInactivePatientStatus = "succeeded";
+        const patients =
+          action.payload?.data || action.payload || [];
+
+        state.allBranchInactivePatient = Array.isArray(patients) ? patients : [];
+      })
+      .addCase(getAllBranchInactivePatient.rejected, (state, action) => {
+        state.getAllBranchInactivePatientStatus = "failed";
+        state.error = action.error.message ?? "Failed to retrieve list of inactive patient."
       })
   },
 });

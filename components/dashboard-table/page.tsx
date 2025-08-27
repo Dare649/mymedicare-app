@@ -17,13 +17,17 @@ interface DashboardTableProps {
   text: string;
   data: BranchPatientData[];
   link: string;
+  headerColor?: string;
+  arrow: boolean;
 }
 
 const DashboardTable: React.FC<DashboardTableProps> = ({
   header,
   text,
   data = [],
-  link
+  link,
+  headerColor = "text-lg text-gray-800",
+  arrow = true,
 }) => {
   return (
     <div className="w-full rounded-2xl border-secondary-2 border-[1.5px] overflow-hidden">
@@ -31,7 +35,7 @@ const DashboardTable: React.FC<DashboardTableProps> = ({
       <div className="w-full bg-secondary-1">
         <div className="p-3 flex items-center justify-between">
           <div>
-            <h2 className="text-lg capitalize font-semibold">{header}</h2>
+            <h2 className={`capitalize font-semibold ${headerColor}`}>{header}</h2>
             <h4 className="text-secondary-6 text-sm mt-1 first-letter:capitalize">
               {text}
             </h4>
@@ -84,10 +88,17 @@ const DashboardTable: React.FC<DashboardTableProps> = ({
                 </div>
               </div>
 
-              {/* Arrow */}
-              <div className="w-10 h-10 rounded-full bg-secondary-2 flex items-center justify-center cursor-pointer">
-                <IoIosArrowForward />
-              </div>
+              {
+                arrow == true ? (
+                  <div className="w-10 h-10 rounded-full bg-secondary-2 flex items-center justify-center cursor-pointer">
+                    <IoIosArrowForward />
+                  </div>
+                ): (
+                  <div className="bg-[#EBF3FF] text-[#0046B8] hover:bg-[#0046B8] hover:text-[#EBF3FF] capitalize font-bold rounded-4xl lg:px-4 sm:px-2 sm:py-1 lg:py-2 text-sm cursor-pointer">
+                    send reminder
+                  </div>
+                )
+              }
             </div>
           ))
         ) : (

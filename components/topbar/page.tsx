@@ -20,7 +20,7 @@ const Topbar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector((state: RootState) => state.loading.isLoading);
   const user = useSelector((state: RootState) => state.auth.user);
-  console.log(user);
+
 
 
   useEffect(() => {

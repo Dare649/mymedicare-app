@@ -80,20 +80,7 @@ const PartnerDashboard = () => {
             <h2 className='text-[#1E293B] font-[500] text-[16px] capitalize'>timeframe</h2>
           </div>
         </div>
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
-          <DashboardTable
-            header="risky patients"
-            text="patients with abnormal readings"
-            data={riskyPatients}
-            link='/branch/patients'
-          />
-          <DashboardTable
-            header="recent patients"
-            text="patients onboarded recently"
-            data={riskyPatients}
-            link='/branch/patients'
-          />
-        </div>
+        
 
 
     </div>

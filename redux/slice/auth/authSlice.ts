@@ -20,6 +20,7 @@ import {
     password: string,
     speciality_id: string,
     profile_picture: string,
+    has_contact_person: boolean,
   }
   
   interface AuthState {
