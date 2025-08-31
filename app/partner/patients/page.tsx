@@ -42,39 +42,55 @@ const PatientSchedule = () => {
     setOpen((prev) => !prev);
   };
 
+  // helper to capitalize first letter 
+  const capitalize = (str: string) =>
+    str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "N/A";
+
   const columns = [
-    { key: "id", label: "ID" },
-    { key: "name", label: "PATIENT NAME" },
-    { key: "phone", label: "PHONE NUMBER" },
-    { key: "email", label: "EMAIL ADDRESS" },
     {
-      key: 'sex',
-      label: 'GENDER',
-      render: (row: any) => row.sex || 'N/A',
+      key: "id",
+      label: "ID",
+      render: (row: any) => row.id, // keep as is
     },
     {
-      key: 'dob',
-      label: 'DATE OF BIRTH',
-      render: (row: any) => row.dob || 'N/A',
+      key: "name",
+      label: "Patient Name",
+      render: (row: any) => capitalize(row.name),
     },
     {
-      key: 'status',
-      label: 'STATUS',
+      key: "phone",
+      label: "Phone Number",
+      render: (row: any) => row.phone || "N/A",
+    },
+    {
+      key: "email",
+      label: "Email Address",
+      render: (row: any) => row.email?.toLowerCase() || "N/A", // emails stay lowercase
+    },
+    {
+      key: "mobile_app_patient",
+      label: "Mobile App",
+      render: (row: any) => capitalize(row.mobile_app_patient),
+    },
+    {
+      key: "status",
+      label: "Status",
       render: (row: any) => (
         <span
           className={`px-2 py-1 rounded-full text-sm font-medium ${
-            row?.status === 'active'
-              ? 'bg-green-100 text-green-800'
-              : row?.status === 'inactive'
-              ? 'bg-yellow-100 text-yellow-800'
-              : 'bg-gray-200 text-gray-600'
+            row?.status === "active"
+              ? "bg-green-100 text-green-800"
+              : row?.status === "inactive"
+              ? "bg-yellow-100 text-yellow-800"
+              : "bg-gray-200 text-gray-600"
           }`}
         >
-          {row?.status || 'N/A'}
+          {capitalize(row?.status)}
         </span>
       ),
     },
   ];
+
 
   return (
     <section className="p-4 space-y-4">

@@ -42,7 +42,7 @@ const Patient = () => {
     setOpen((prev) => !prev);
   };
 
-  // helper to capitalize first letter
+  // helper to capitalize first letter 
   const capitalize = (str: string) =>
     str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "N/A";
 
