@@ -9,6 +9,7 @@ import branchPartnerReducer from '@/redux/slice/branch-partner/branch-account/br
 import hqPartnerReducer from '@/redux/slice/hq-partner/hq-account/hq-partner-accountSlice';
 import hqPatientReducer from '@/redux/slice/hq-partner/hq-patient/hq-patientSlice';
 import partnerDashboardReducer from '@/redux/slice/dashboard/dashboardSlice';
+import adminPatientReducer from '@/redux/slice/admin/patient/patientSlice';
 
 
 
@@ -26,6 +27,7 @@ const persistedBranchPartnerReducer = persistReducer(persistConfig, branchPartne
 const persistedHqPartnerReducer = persistReducer(persistConfig, hqPartnerReducer);
 const persistedHqPatientReducer = persistReducer(persistConfig, hqPatientReducer);
 const persistedPartnerDashboardReducer = persistReducer(persistConfig, partnerDashboardReducer);
+const persistedAdminPatientReducer = persistReducer(persistConfig, adminPatientReducer);
 
 
 
@@ -39,6 +41,7 @@ export const store = configureStore({
         hqPartner: persistedHqPartnerReducer,
         hqPatient: persistedHqPatientReducer,
         pertnerDashboard: persistedPartnerDashboardReducer,
+        adminPatient: persistedAdminPatientReducer,
     },
 
     middleware: (getDefaultMiddleware) =>

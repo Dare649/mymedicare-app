@@ -200,6 +200,12 @@ export const adminNav = [
     //     gap: false
     // },
     {
+        title: "users",
+        icon: <IoChatbubbleEllipsesOutline size={25}/>,
+        path: "/admin/users",
+        gap: false
+    },
+    {
         title: "partners",
         icon: <IoChatbubbleEllipsesOutline size={25}/>,
         path: "/admin/partners",

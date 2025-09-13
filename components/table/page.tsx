@@ -16,13 +16,14 @@ interface TableProps {
   columns?: Column[];
   itemsPerPage?: number;
   viewPath?: (id: string | number) => string;
+  handleView?: (row: any) => void; 
 }
 
 const Table: React.FC<TableProps> = ({
   data = [],
   columns = [],
   itemsPerPage = 10,
-  viewPath = (id) => `/view/${id}`,
+  handleView
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
@@ -82,15 +83,13 @@ const Table: React.FC<TableProps> = ({
                       {item[col.key]}
                     </td>
                   ))}
-                  <td className="py-3 px-6">
-                    <Link 
-                        href={viewPath(item.id)}
-                        className='flex justify-center bg-secondary-4 rounded-md p-2 text-[#0F172A] cursor-pointer gap-x-1'
-                    >
-                      <IoEyeOutline size={14}/>
-                      <h2 className='-mt-1'>view</h2>
-                    </Link>
-                  </td>
+                  <button 
+                    className="py-3 px-6 mt-3 flex justify-center bg-secondary-4 rounded-md p-2 text-[#0F172A] cursor-pointer gap-x-1"
+                     onClick={() => handleView && handleView(item)}
+                  >
+                    <IoEyeOutline size={14}/>
+                    <h2 className='-mt-1'>view</h2>
+                  </button>
                 </tr>
               ))
             ) : (
