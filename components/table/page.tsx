@@ -83,14 +83,17 @@ const Table: React.FC<TableProps> = ({
                       {item[col.key]}
                     </td>
                   ))}
-                  <button 
-                    className="py-3 px-6 mt-3 flex justify-center bg-secondary-4 rounded-md p-2 text-[#0F172A] cursor-pointer gap-x-1"
-                     onClick={() => handleView && handleView(item)}
-                  >
-                    <IoEyeOutline size={14}/>
-                    <h2 className='-mt-1'>view</h2>
-                  </button>
+                  <td className="py-3 px-6">
+                    <button
+                      className="flex items-center justify-center bg-secondary-4 rounded-md p-2 text-[#0F172A] cursor-pointer gap-x-1"
+                      onClick={() => handleView && handleView(item)}
+                    >
+                      <IoEyeOutline size={14} />
+                      <span className="text-sm">View</span>
+                    </button>
+                  </td>
                 </tr>
+
               ))
             ) : (
               <tr>

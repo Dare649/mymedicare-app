@@ -40,8 +40,6 @@ const Users = () => {
 
   // keep the full row object instead of just uuid
   const handleOpenDetails = (row: any) => {
-    console.log("Row received:", row);
-    console.log("Row.uuid:", row?.uuid);
     setSelectedRow(row);
     setOpen(true);
   };

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/redux/store";
 import { startLoading, stopLoading } from "@/redux/slice/loadingSlice";
 import { useRouter } from "next/navigation";
+import UserDetails from '@/components/branch-partner/user-details/page';
 
 
 
@@ -40,6 +41,19 @@ const Patient = () => {
   // Toggle modal
   const handleModal = () => {
     setOpen((prev) => !prev);
+  };
+
+
+   // keep the full row object instead of just uuid
+  const handleOpenDetails = (row: any) => {
+    setSelectedRow(row);
+    setOpen(true);
+  };
+
+  // Close modal
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedRow(null);
   };
 
   // helper to capitalize first letter 
@@ -106,6 +120,7 @@ const Patient = () => {
       <Table 
         columns={columns}
         data={allBranchPatient}
+        handleView={(row) => handleOpenDetails(row)}
       />
 
       {
@@ -120,6 +135,11 @@ const Patient = () => {
           </Modal>
         )
       }
+
+      {/* Modal for User Details */}
+      <Modal visible={open} onClose={handleClose}>
+        {selectedRow && <UserDetails uuid={selectedRow.uuid} close={handleClose}/>}
+      </Modal>
     </section>
   );
 };

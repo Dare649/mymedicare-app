@@ -32,3 +32,35 @@ export const getPatient = createAsyncThunk(
         }
     }
 );
+
+
+// get patient at risk
+export const getAllAdminRiskPatient = createAsyncThunk(
+    "patient/getAllAdminRiskPatient",
+    async (_, { rejectWithValue}) => {
+        try {
+            const res = await axiosInstance.get('/api/~admin/get_at_risk');
+            return res.data?.data?.patients_at_risk;
+        } catch (error: any) {
+            return rejectWithValue({
+                message: error.res?.message
+            });
+        }
+    }
+);
+
+
+// get inactive patient
+export const getAllAdminInactivePatient = createAsyncThunk(
+    "patient/getAllAdminInactivePatient",
+    async (_, { rejectWithValue}) => {
+        try {
+            const res = await axiosInstance.get('/api/~admin/inactive_patients');
+            return res.data?.data;
+        } catch (error: any) {
+            return rejectWithValue({
+                message: error.res?.message
+            });
+        }
+    }
+);

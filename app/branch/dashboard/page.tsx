@@ -179,7 +179,7 @@ const BranchDashboard = () => {
         </div>
       </div>
 
-      {/* Risky Patients Table */}
+      {/* Risky Patients Table 8*/}
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
         <DashboardTable
           header="patient at risk"

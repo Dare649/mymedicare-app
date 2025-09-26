@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
     getAllPatient,
-    getPatient   
+    getPatient,
+    getAllAdminInactivePatient,
+    getAllAdminRiskPatient   
 } from "./patient";
 
 
@@ -11,6 +13,14 @@ interface Address {
   state: string;
   zip_code: string | null;
   country: string;
+}
+
+
+interface RmTracking {
+  blood_pressure: "yes" | "no";
+  blood_sugar: "yes" | "no";
+  weight: "yes" | "no";
+  food_log: "yes" | "no";
 }
 
 interface PatientData {
@@ -35,26 +45,35 @@ interface PatientData {
   address: Address;
   prescription_count: number;
   consultation_count: number;
+  rm_tracking?: RmTracking;
 }
 
 interface PatientState {
     getAllPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
     getPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
     status: "idle" | "isLoading" | "succeeded" | "failed";
+    getAllAdminRiskPatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
+    getAllAdminInactivePatientStatus: "idle" | "isLoading" | "succeeded" | "failed";
     patient: PatientData | null;
     allPatient: PatientData[];
+    allAdminPatient: PatientData[];
+    allAdminInactivePatient: PatientData[];
     error: string | null;
 };
-
 
 const initialState: PatientState = {
     getAllPatientStatus: "idle",
     getPatientStatus: "idle",
+    getAllAdminRiskPatientStatus: "idle",
+    getAllAdminInactivePatientStatus: "idle",
     status: "idle",
     patient: null,
     allPatient: [],
+    allAdminPatient: [],
+    allAdminInactivePatient: [],
     error: null,
 };
+
 
 
 const adminPatientSlice = createSlice({
@@ -88,6 +107,40 @@ const adminPatientSlice = createSlice({
         .addCase(getAllPatient.rejected, (state, action) => {
             state.getAllPatientStatus = "failed";
             state.error = action.error.message ?? "Failed to retrieve partners list."
+        })
+
+        // get all branch partner patient at risk
+        .addCase(getAllAdminRiskPatient.pending, (state) => {
+        state.getAllAdminRiskPatientStatus = "isLoading";
+        })
+        .addCase(getAllAdminRiskPatient.fulfilled, (state, action) => {
+        state.getAllAdminRiskPatientStatus = "succeeded";
+
+        // ✅ Ensure we extract patients_at_risk array from payload.data
+        const patients =
+            action.payload?.data?.patients_at_risk || action.payload || [];
+
+        state.allAdminPatient = Array.isArray(patients) ? patients : [];
+        })
+        .addCase(getAllAdminRiskPatient.rejected, (state, action) => {
+        state.getAllAdminRiskPatientStatus = "failed";
+        state.error = action.error.message ?? "Failed to retrieve list of patient at risk."
+        })
+
+        // get all  Admin partner inactive patient
+        .addCase(getAllAdminInactivePatient.pending, (state) => {
+        state.getAllAdminInactivePatientStatus = "isLoading";
+        })
+        .addCase(getAllAdminInactivePatient.fulfilled, (state, action) => {
+        state.getAllAdminInactivePatientStatus = "succeeded";
+        const patients =
+            action.payload?.data || action.payload || [];
+
+        state.allAdminInactivePatient = Array.isArray(patients) ? patients : [];
+        })
+        .addCase(getAllAdminInactivePatient.rejected, (state, action) => {
+        state.getAllAdminInactivePatientStatus = "failed";
+        state.error = action.error.message ?? "Failed to retrieve list of inactive patient."
         })
     },
 });
