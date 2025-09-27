@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/redux/store";
 import { startLoading, stopLoading } from "@/redux/slice/loadingSlice";
 import { useRouter } from "next/navigation";
+import UserDetails from '@/components/partner/user-details/page';
 
 
 
@@ -35,6 +36,13 @@ const PatientSchedule = () => {
 
     fetchPartners();
   }, [dispatch]);
+
+
+  // keep the full row object instead of just uuid
+  const handleOpenDetails = (row: any) => {
+    setSelectedRow(row);
+    setOpen(true);
+  };
 
 
   // Toggle modal
@@ -106,6 +114,7 @@ const PatientSchedule = () => {
       <Table 
         columns={columns}
         data={allPartnerPatient}
+        handleView={(row) => handleOpenDetails(row)}
       />
 
       {
@@ -120,6 +129,11 @@ const PatientSchedule = () => {
           </Modal>
         )
       }
+
+      {/* Modal for User Details */}
+      <Modal visible={open} onClose={handleModal}>
+        {selectedRow && <UserDetails uuid={selectedRow.uuid} close={handleModal}/>}
+      </Modal>
     </section>
   );
 };

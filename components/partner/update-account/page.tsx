@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { toast } from 'react-toastify';
@@ -78,6 +79,7 @@ const UpdatePartnerAccount = () => {
   const partner = useSelector((state: RootState) => state.hqPartner.hqPartner);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<FormState>(initialState);
+  const router = useRouter();
 
 
   useEffect(() => {
@@ -146,6 +148,7 @@ const UpdatePartnerAccount = () => {
       await dispatch(updateHqPartner(formData));
       toast.success('Partner account updated successfully');
       dispatch(getHqPartner());
+      router.push("/partner/dashboard");
     } catch (error: any) {
       toast.error('Failed to update account');
     } finally {

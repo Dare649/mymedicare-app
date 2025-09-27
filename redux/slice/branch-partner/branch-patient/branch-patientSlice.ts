@@ -5,7 +5,7 @@ import {
     getAllBranchPatient,
     createBranchPatientBulk,
     getAllBranchRiskPatient,
-    getAllBranchInactivePatient
+    getAllBranchInactivePatient,
 } from "./branch-patient";
 
 
